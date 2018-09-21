@@ -8,8 +8,9 @@ class Fighter {
         this.attack = 10;
     }
     //Attack function
-    fight(){
-        console.log('Fighter has attacked!');
+    fight(enemy){
+        enemy.health -= 10;
+        console.log('Hyah! Attack has been made!');
     }
     //Counter function
     counter(){
@@ -17,7 +18,11 @@ class Fighter {
     }
     //Heal Function
     heal(){
-        console.log('Fighter has healed');
+        if (this.health < 100) {
+            this.health += 10;
+        } else {
+            return `${this.name} tried to heal, but was already at full health.`
+        }
     }
 };
 
@@ -48,19 +53,18 @@ class Ranger extends Fighter {
 }
 
 //List of Playable Characters, one for each player.
-const testBrawler = new Brawler('GARR');
-const testPriest = new Priest('Lillian');
-const testKnight = new Knight('Sir Grant');
-const testRanger = new Ranger('Outlaw');
-console.log(testBrawler);
-console.log(testPriest);
-console.log(testKnight);
-console.log(testRanger);
-testBrawler.special();
-testPriest.special();
-testKnight.special();
-testRanger.special();
+const brawlerOne = new Brawler('GARR');
+const priestOne = new Priest('Lillian');
+const knightOne = new Knight('Sir Grant');
+const rangerOne = new Ranger('Outlaw');
+const brawlerTwo = new Brawler('GARR');
+const priestTwo = new Priest('Lillian');
+const knightTwo = new Knight('Sir Grant');
+const rangerTwo = new Ranger('Outlaw');
+
 // Build a Fight Function that takes User Inputs and converts them to actions from the Fighter class.
+
+
 
 // Build a function that runs the outcome of the inputs and alters the character's stats (health).
 
