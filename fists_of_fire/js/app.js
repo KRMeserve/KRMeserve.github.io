@@ -75,7 +75,7 @@ $(()=>{
     let playerTwo = knightTwo;
 
 
-    // Build a Fight Function that takes User Inputs and converts them to actions from the Fighter class.
+    // Variables Used In Fight
     const startFightDiv = $('<div>').text('Start Fight!').addClass('start-fight').appendTo('.playField');
     const emptyAlertBox = ()=>{
         $('#fightAlertBox').empty();
@@ -84,6 +84,78 @@ $(()=>{
         $('#fightAlertBox').text(`Phase ${turnTimer}... Fight!`);
         setTimeout(emptyAlertBox, 4000);
     };
+    const playerOneWins = ()=>{
+        $('#fightAlertBox').text('Player One has won the game! Please reload the page if you want to play again.');
+        return false;
+    }
+    const playerTwoWins = ()=>{
+        $('#fightAlertBox').text('Player One has won the game! Please reload the page if you want to play again.');
+        return false;
+    }
+    let playerOneRoundsWon = 0;
+    let playerTwoRoundsWon = 0;
+
+
+
+    //Checking to see if someone has won the best of three. If so, it ends the game.
+    // (=== TO ADD: Want a button to pop up on the victory screen to reload the page so they can pick characters again and play again ===)
+    const checkGameWin = ()=>{
+        if (playerOneRoundsWon === 2) {
+            playerOneWins();
+        } else if (playerTwoRoundsWon === 2) {
+            playerTwoWins();
+        } else {
+            startFight();
+        }
+    }
+
+
+    const checkRoundWin = ()=>{
+        //Checking who has 0 health and awarding a win to the victor (or a draw)
+        if (playerOne.health > 0 && playerTwo.health <= 0) {
+            const playerOneWinsMessageOne = ()=>{
+                $('#fightAlertBox').text('Player One Wins This Round!');
+                playerOneRoundsWon++;
+                setTimeout(emptyAlertBox, 4000);
+            }
+            const playerOneWinsMessageTwo = ()=>{
+                $('#fightAlertBox').text(`Player One has won ${playerOneRoundsWon} rounds and Player Two has won ${playerTwoRoundsWon}.`);
+                setTimeout(emptyAlertBox, 4000);
+            }
+            playerOneWinsMessageOne();
+            setTimeout(playerOneWinsMessageTwo, 5000)
+            setTimeout(checkGameWin, 12000);
+            console.log(playerOneRoundsWon);
+        } else if (playerTwo.health > 0 && playerOne.health <= 0) {
+            const playerTwoWinsMessageOne = ()=>{
+                $('#fightAlertBox').text('Player Two Wins This Round!');
+                playerTwoRoundsWon++;
+                setTimeout(emptyAlertBox, 4000);
+            }
+            const playerTwoWinsMessageTwo = ()=>{
+                $('#fightAlertBox').text(`Player One has won ${playerOneRoundsWon} rounds and Player Two has won ${playerTwoRoundsWon}.`);
+                setTimeout(emptyAlertBox, 4000);
+            }
+            playerTwoWinsMessageOne();
+            setTimeout(playerTwoWinsMessageTwo, 5000)
+            setTimeout(checkGameWin, 12000);
+            console.log(playerTwoRoundsWon);
+        } else if (playerTwo.health <= 0 && playerOne.health <= 0){
+            const playersDraw = ()=>{
+                $('#fightAlertBox').text('Draw! Both players lost. Rematch!');
+                setTimeout(emptyAlertBox, 4000);
+            }
+            const playerTwoWinsMessageTwo = ()=>{
+                $('#fightAlertBox').text(`Player One has won ${playerOneRoundsWon} rounds and Player Two has won ${playerTwoRoundsWon}.`);
+                setTimeout(emptyAlertBox, 4000);
+            }
+            playersDraw();
+            setTimeout(playerTwoWinsMessageTwo, 5000);
+            setTimeout(checkGameWin, 12000);
+        } else {
+            startPhase();
+        }
+    }
 
     const calculateRound = (playerOneInput, playerTwoInput)=>{
         //Player One attacks, player two counters
@@ -91,44 +163,52 @@ $(()=>{
             playerOne.health -= (playerTwo.attack * 2);
             console.log(playerOne);
             console.log(playerTwo);
+            checkRoundWin();
             //Player One Counters, Player Two attacks
         } else if (playerOneInput === 'a' && playerTwoInput === 'i') {
             playerTwo.health -= (playerOne.attack * 2);
             console.log(playerOne);
             console.log(playerTwo);
+            checkRoundWin();
             //Player One and Player Two attack
         } else if (playerOneInput === 'w' && playerTwoInput === 'i') {
             playerOne.fight(playerTwo);
             playerTwo.fight(playerOne);
             console.log(playerOne);
             console.log(playerTwo);
+            checkRoundWin();
             //Player One heals and Player Two attacks
         } else if (playerOneInput === 's' && playerTwoInput === 'i') {
             playerOne.health -= (playerTwo.attack * 2.5);
             console.log(playerOne);
             console.log(playerTwo);
+            checkRoundWin();
             //Player One attacks and player two heals
         } else if (playerOneInput === 'w' && playerTwoInput === 'k'){
             playerTwo.health -= (playerOne.attack * 2.5);
             console.log(playerOne);
             console.log(playerTwo);
+            checkRoundWin();
             //Player One heals and player two counters
         } else if (playerOneInput === 's' && playerTwoInput === 'j') {
             playerOne.heal();
             console.log(playerOne);
             console.log(playerTwo);
+            checkRoundWin();
             //Player one counters and player two heals
         } else if (playerOneInput === 'a' && playerTwoInput === 'k') {
             playerTwo.heal();
             console.log(playerOne);
             console.log(playerTwo);
+            checkRoundWin();
+            //Player one heals and player two heals
         } else if (playerOneInput === 's' && playerTwoInput === 'k') {
             playerOne.heal();
             playerTwo.heal();
             console.log(playerOne);
             console.log(playerTwo);
+            checkRoundWin();
         }
-    startPhase();
     }
 
     const startPhase = ()=>{
@@ -140,7 +220,7 @@ $(()=>{
         const calculateRoundDelay = ()=>{
             calculateRound(playerOneInput, playerTwoInput);
         };
-        setTimeout(calculateRoundDelay, 4000);
+        setTimeout(calculateRoundDelay, 6000);
     }
 
 
@@ -150,11 +230,11 @@ $(()=>{
         playerTwo.health = 100;
         turnTimer = 1;
         //UI alerts
-        $('#fightAlertBox').text('Start Fight!');
-        setTimeout(emptyAlertBox, 4000);
+        $('#fightAlertBox').text('New Round Beginning! Prepare To Fight!');
+        setTimeout(emptyAlertBox, 6000);
 
         //Start the round.
-        setTimeout(startPhase, 2000);
+        setTimeout(startPhase, 6500);
     }
     // Just here for testing purposes. Should not be here when game is done.
     $('.start-fight').on('click', ()=>{
