@@ -241,7 +241,6 @@ $(()=>{
         startFight();
     });
 
-    startFight();
     // Build a function that runs the outcome of the inputs and alters the character's stats (health).
 
 
