@@ -15,7 +15,7 @@ class Fighter {
     }
     //Counter function
     counter(){
-        console.log('Fighter has countered');
+        console.log(`${this.name} has countered.`);
     }
     //Heal Function
     heal(){
@@ -86,18 +86,61 @@ $(()=>{
     };
 
     const calculateRound = (playerOneInput, playerTwoInput)=>{
-        console.log(playerOneInput);
-        console.log(playerTwoInput);
+        //Player One attacks, player two counters
+        if (playerOneInput === 'w' && playerTwoInput === 'j') {
+            playerOne.health -= (playerTwo.attack * 2);
+            console.log(playerOne);
+            console.log(playerTwo);
+            //Player One Counters, Player Two attacks
+        } else if (playerOneInput === 'a' && playerTwoInput === 'i') {
+            playerTwo.health -= (playerOne.attack * 2);
+            console.log(playerOne);
+            console.log(playerTwo);
+            //Player One and Player Two attack
+        } else if (playerOneInput === 'w' && playerTwoInput === 'i') {
+            playerOne.fight(playerTwo);
+            playerTwo.fight(playerOne);
+            console.log(playerOne);
+            console.log(playerTwo);
+            //Player One heals and Player Two attacks
+        } else if (playerOneInput === 's' && playerTwoInput === 'i') {
+            playerOne.health -= (playerTwo.attack * 2.5);
+            console.log(playerOne);
+            console.log(playerTwo);
+            //Player One attacks and player two heals
+        } else if (playerOneInput === 'w' && playerTwoInput === 'k'){
+            playerTwo.health -= (playerOne.attack * 2.5);
+            console.log(playerOne);
+            console.log(playerTwo);
+            //Player One heals and player two counters
+        } else if (playerOneInput === 's' && playerTwoInput === 'j') {
+            playerOne.heal();
+            console.log(playerOne);
+            console.log(playerTwo);
+            //Player one counters and player two heals
+        } else if (playerOneInput === 'a' && playerTwoInput === 'k') {
+            playerTwo.heal();
+            console.log(playerOne);
+            console.log(playerTwo);
+        } else if (playerOneInput === 's' && playerTwoInput === 'k') {
+            playerOne.heal();
+            playerTwo.heal();
+            console.log(playerOne);
+            console.log(playerTwo);
+        }
+    startPhase();
     }
 
-    const startRound = ()=>{
+    const startPhase = ()=>{
         // Collect player input.
         const playerOneInput = prompt('Choose your attack! w = attack, a = counter, s = heal, d = super', 'w / a / s / d');
         const playerTwoInput = prompt('Choose your attack! i = attack, j = counter, k = heal, l = super', 'i / j / k / l');
         turnLengthAnnounce();
         turnTimer++;
-
-        calculateRound(playerOneInput, playerTwoInput);
+        const calculateRoundDelay = ()=>{
+            calculateRound(playerOneInput, playerTwoInput);
+        };
+        setTimeout(calculateRoundDelay, 4000);
     }
 
 
@@ -110,10 +153,8 @@ $(()=>{
         $('#fightAlertBox').text('Start Fight!');
         setTimeout(emptyAlertBox, 4000);
 
-        console.log(playerOne);
-        console.log(playerTwo);
         //Start the round.
-        setTimeout(startRound, 2000);
+        setTimeout(startPhase, 2000);
     }
     // Just here for testing purposes. Should not be here when game is done.
     $('.start-fight').on('click', ()=>{

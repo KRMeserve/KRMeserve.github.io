@@ -3,3 +3,10 @@
     width: 100px;
     height: 50px;
 }
+#fightAlertBox {
+    font-size: 3em;
+    text-align: center;
+    height: 70px;
+    width: 30%;
+    margin: 0 auto;
+}
