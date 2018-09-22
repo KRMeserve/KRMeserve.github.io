@@ -1,4 +1,5 @@
 // Global Constants go up here!
+let turnTimer = 1;
 
 // Build Fighter Class With Basic Stats and functions. (-- Tested with Logs already! All Functions and stats are retrievable --)
 class Fighter {
@@ -62,8 +63,8 @@ const priestTwo = new Priest('Lillian');
 const knightTwo = new Knight('Sir Grant');
 const rangerTwo = new Ranger('Outlaw');
 
-const playerOne = brawlerOne;
-const playerTwo = knightTwo;
+// const playerOne = brawlerOne;
+// const playerTwo = knightTwo;
 
 
 
@@ -73,16 +74,53 @@ $(()=>{
     let playerOne = brawlerOne;
     let playerTwo = knightTwo;
 
-    // Build a Fight Function that takes User Inputs and converts them to actions from the Fighter class.
 
+    // Build a Fight Function that takes User Inputs and converts them to actions from the Fighter class.
+    const startFightDiv = $('<div>').text('Start Fight!').addClass('start-fight').appendTo('.playField');
+    const emptyAlertBox = ()=>{
+        $('#fightAlertBox').empty();
+    };
+    const turnLengthAnnounce = ()=>{
+        $('#fightAlertBox').text(`Phase ${turnTimer}... Fight!`);
+        setTimeout(emptyAlertBox, 4000);
+    };
+
+    const calculateRound = (playerOneInput, playerTwoInput)=>{
+        console.log(playerOneInput);
+        console.log(playerTwoInput);
+    }
+
+    const startRound = ()=>{
+        // Collect player input.
+        const playerOneInput = prompt('Choose your attack! w = attack, a = counter, s = heal, d = super', 'w / a / s / d');
+        const playerTwoInput = prompt('Choose your attack! i = attack, j = counter, k = heal, l = super', 'i / j / k / l');
+        turnLengthAnnounce();
+        turnTimer++;
+
+        calculateRound(playerOneInput, playerTwoInput);
+    }
 
 
     const startFight = ()=>{
+        //Reset round stats for new fight.
         playerOne.health = 100;
         playerTwo.health = 100;
-        const startFightDiv = $('<div>').text('Start Fight!').addClass('start-fight').appendTo('.playField');
+        turnTimer = 1;
+        //UI alerts
+        $('#fightAlertBox').text('Start Fight!');
+        setTimeout(emptyAlertBox, 4000);
+
+        console.log(playerOne);
+        console.log(playerTwo);
+        //Start the round.
+        setTimeout(startRound, 2000);
     }
-startFight();
+    // Just here for testing purposes. Should not be here when game is done.
+    $('.start-fight').on('click', ()=>{
+        startFight();
+    });
+
+    startFight();
     // Build a function that runs the outcome of the inputs and alters the character's stats (health).
 
 
