@@ -9,7 +9,7 @@ class Fighter {
     }
     //Attack function
     fight(enemy){
-        enemy.health -= 10;
+        enemy.health -= this.attack;
         console.log('Hyah! Attack has been made!');
     }
     //Counter function
@@ -62,16 +62,28 @@ const priestTwo = new Priest('Lillian');
 const knightTwo = new Knight('Sir Grant');
 const rangerTwo = new Ranger('Outlaw');
 
-// Build a Fight Function that takes User Inputs and converts them to actions from the Fighter class.
+const playerOne = brawlerOne;
+const playerTwo = knightTwo;
 
 
 
-// Build a function that runs the outcome of the inputs and alters the character's stats (health).
-
-// Document Ready Function Goes at the bottom!
+// Document Ready Function Goes at the bottom of page, no functions below this one!
 $(()=>{
+    // NEED TO BUILD ====== Section where players get to choose their characters and save them to these constants.
+    let playerOne = brawlerOne;
+    let playerTwo = knightTwo;
+
+    // Build a Fight Function that takes User Inputs and converts them to actions from the Fighter class.
 
 
+
+    const startFight = ()=>{
+        playerOne.health = 100;
+        playerTwo.health = 100;
+        const startFightDiv = $('<div>').text('Start Fight!').addClass('start-fight').appendTo('.playField');
+    }
+startFight();
+    // Build a function that runs the outcome of the inputs and alters the character's stats (health).
 
 
 });
