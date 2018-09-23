@@ -267,20 +267,19 @@ $(()=>{
                 if (keyName === 'i') {
                     playerTwoInput = 'i';
                     $('#modalTwo').css('display', 'none');
-                    continueGame();
                 } else if (keyName === 'j') {
                     playerTwoInput = 'j';
                     $('#modalTwo').css('display', 'none');
-                    continueGame();
                 } else if (keyName === 'k') {
                     playerTwoInput = 'k';
                     $('#modalTwo').css('display', 'none');
-                    continueGame();
                 }
             })
         }
         playerOneTurnInput();
         playerTwoTurnInput();
+
+        setTimeout(continueGame, 15000);
     }
 
 
