@@ -77,6 +77,8 @@ $(()=>{
     // NEED TO BUILD ====== Section where players get to choose their characters and save them to these constants.
     let playerOne = brawlerOne;
     let playerTwo = knightTwo;
+    let playerOneHealthBarValue = document.getElementById('playerOneHealthBar');
+    let playerTwoHealthBarValue = document.getElementById('playerTwoHealthBar');
 
     //Start Fight Button
     const startFightDiv = $('<div>').text('Start Fight!').addClass('start-fight').appendTo('.playField');
@@ -168,6 +170,7 @@ $(()=>{
         //Player One attacks, player two counters
         if (playerOneInput === 'w' && playerTwoInput === 'j') {
             playerOne.health -= (playerTwo.attack * 2);
+            playerOneHealthBarValue.value -= (playerTwo.attack * 2);
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
@@ -176,6 +179,7 @@ $(()=>{
             //Player One Counters, Player Two attacks
         } else if (playerOneInput === 'a' && playerTwoInput === 'i') {
             playerTwo.health -= (playerOne.attack * 2);
+            playerTwoHealthBarValue.value -= (playerOne.attack * 2);
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
@@ -185,6 +189,8 @@ $(()=>{
         } else if (playerOneInput === 'w' && playerTwoInput === 'i') {
             playerOne.fight(playerTwo);
             playerTwo.fight(playerOne);
+            playerOneHealthBarValue.value -= 10;
+            playerTwoHealthBarValue.value -= 10;
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
@@ -193,6 +199,7 @@ $(()=>{
             //Player One heals and Player Two attacks
         } else if (playerOneInput === 's' && playerTwoInput === 'i') {
             playerOne.health -= (playerTwo.attack * 2.5);
+            playerOneHealthBarValue.value -= (playerTwo.attack * 2.5);
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
@@ -201,6 +208,7 @@ $(()=>{
             //Player One attacks and player two heals
         } else if (playerOneInput === 'w' && playerTwoInput === 'k'){
             playerTwo.health -= (playerOne.attack * 2.5);
+            playerTwoHealthBarValue.value -= (playerTwo.attack * 2.5);
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
@@ -209,6 +217,7 @@ $(()=>{
             //Player One heals and player two counters
         } else if (playerOneInput === 's' && playerTwoInput === 'j') {
             playerOne.heal();
+            playerOneHealthBarValue.value += 15;
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
@@ -217,6 +226,7 @@ $(()=>{
             //Player one counters and player two heals
         } else if (playerOneInput === 'a' && playerTwoInput === 'k') {
             playerTwo.heal();
+            playerTwoHealthBarValue.value += 15;
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
@@ -226,6 +236,8 @@ $(()=>{
         } else if (playerOneInput === 's' && playerTwoInput === 'k') {
             playerOne.heal();
             playerTwo.heal();
+            playerOneHealthBarValue.value += 15;
+            playerTwoHealthBarValue.value += 15;
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
@@ -288,6 +300,8 @@ $(()=>{
         //Reset round stats for new fight.
         playerOne.health = 100;
         playerTwo.health = 100;
+        playerOneHealthBarValue.value = 100;
+        playerTwoHealthBarValue.value = 100;
         turnTimer = 1;
         //UI alerts
         $('#fightAlertBox').text('New Round Beginning! Prepare To Fight!');
