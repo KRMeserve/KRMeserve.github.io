@@ -1,7 +1,10 @@
 .start-fight {
-    background-color: purple;
+    background-color: yellow;
     width: 100px;
-    height: 50px;
+    text-align: center;
+    padding: 15px;
+    margin: 0 auto;
+    cursor: pointer;
 }
 #fightAlertBox {
     font-size: 3em;
@@ -82,5 +85,20 @@
     appearance: none;
     height: 20px;
     width: 300px;
-
+}
+.playerCharacterContainer {
+    height: 70%;
+    margin: 0;
+    max-height: 500px;
+}
+.playField {
+    background-color: blue;
+}
+.playerOne {
+    width: 20%;
+    margin-left: 10%;
+}
+.playerTwo {
+    width: 20%;
+    margin-left: 40%;
 }

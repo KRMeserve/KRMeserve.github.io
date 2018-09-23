@@ -78,9 +78,10 @@ $(()=>{
     let playerOne = brawlerOne;
     let playerTwo = knightTwo;
 
+    //Start Fight Button
+    const startFightDiv = $('<div>').text('Start Fight!').addClass('start-fight').appendTo('.playField');
 
     // Variables Used In Fight
-    const startFightDiv = $('<div>').text('Start Fight!').addClass('start-fight').appendTo('.playField');
     const emptyAlertBox = ()=>{
         $('#fightAlertBox').empty();
     };
@@ -299,6 +300,7 @@ $(()=>{
     // Just here for testing purposes. Should not be here when game is done.
     $('.start-fight').on('click', ()=>{
         startFight();
+        $('.start-fight').css('display', 'none');
     });
 
     //Character Selection Brains (Tested and it WORKS! :D)
@@ -308,18 +310,22 @@ $(()=>{
         const character = event.target.id;
         if (character === 'barbarianOne') {
             playerOne = brawlerOne;
+            $('.playerOne').attr('src', 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/342/420/618/636272680339895080.png');
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
         } else if (character === 'priestOne') {
             playerOne = priestOne;
+            $('.playerOne').attr('src', 'https://i.pinimg.com/originals/5c/aa/17/5caa172e75d7fcc0369b431ab53c224a.png');
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
         } else if (character === 'knightOne') {
             playerOne = knightOne;
+            $('.playerOne').attr('src', 'https://i.pinimg.com/originals/cc/d9/d3/ccd9d348e2f084d1d84de8e3e2f0b1f4.png');
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
         } else if (character === 'rangerOne') {
             playerOne = rangerOne;
+            $('.playerOne').attr('src', 'http://www.pngmart.com/files/6/Archer-Transparent-PNG.png');
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
         }
@@ -330,18 +336,22 @@ $(()=>{
         const character = event.target.id;
         if (character === 'barbarianTwo') {
             playerTwo = brawlerTwo;
+            $('.playerTwo').attr('src', 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/342/420/618/636272680339895080.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
         } else if (character === 'priestTwo') {
             playerTwo = priestTwo;
+            $('.playerTwo').attr('src', 'https://i.pinimg.com/originals/5c/aa/17/5caa172e75d7fcc0369b431ab53c224a.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
         } else if (character === 'knightTwo') {
             playerTwo = knightTwo;
+            $('.playerTwo').attr('src', 'https://i.pinimg.com/originals/cc/d9/d3/ccd9d348e2f084d1d84de8e3e2f0b1f4.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
         } else if (character === 'rangerTwo') {
             playerTwo = rangerTwo;
+            $('.playerTwo').attr('src', 'http://www.pngmart.com/files/6/Archer-Transparent-PNG.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
         }
