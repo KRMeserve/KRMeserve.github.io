@@ -240,12 +240,59 @@ $(()=>{
         //Start the round.
         setTimeout(startPhase, 6500);
     }
+
     // Just here for testing purposes. Should not be here when game is done.
     $('.start-fight').on('click', ()=>{
         startFight();
     });
 
-    // Build a function that runs the outcome of the inputs and alters the character's stats (health).
+    //Character Selection Brains (Tested and it WORKS! :D)
+    $('#pickCharacters').css('display', 'block');
+    $('#playerTwoCharacter').css('display', 'none');
+    $('#playerOneCharacter>.characterSelect>img').on('click', (event)=>{
+        const character = event.target.id;
+        if (character === 'barbarianOne') {
+            playerOne = brawlerOne;
+            $('#playerOneCharacter').css('display', 'none');
+            $('#playerTwoCharacter').css('display', 'flex');
+        } else if (character === 'priestOne') {
+            playerOne = priestOne;
+            $('#playerOneCharacter').css('display', 'none');
+            $('#playerTwoCharacter').css('display', 'flex');
+        } else if (character === 'knightOne') {
+            playerOne = knightOne;
+            $('#playerOneCharacter').css('display', 'none');
+            $('#playerTwoCharacter').css('display', 'flex');
+        } else if (character === 'rangerOne') {
+            playerOne = rangerOne;
+            $('#playerOneCharacter').css('display', 'none');
+            $('#playerTwoCharacter').css('display', 'flex');
+        }
+        console.log(character);
+        console.log(playerOne);
+    });
+    $('#playerTwoCharacter>.characterSelect>img').on('click', (event)=>{
+        const character = event.target.id;
+        if (character === 'barbarianTwo') {
+            playerTwo = brawlerTwo;
+            $('#playerTwoCharacter').css('display', 'none');
+            $('#pickCharacters').css('display', 'none');
+        } else if (character === 'priestTwo') {
+            playerTwo = priestTwo;
+            $('#playerTwoCharacter').css('display', 'none');
+            $('#pickCharacters').css('display', 'none');
+        } else if (character === 'knightTwo') {
+            playerTwo = knightTwo;
+            $('#playerTwoCharacter').css('display', 'none');
+            $('#pickCharacters').css('display', 'none');
+        } else if (character === 'rangerTwo') {
+            playerTwo = rangerTwo;
+            $('#playerTwoCharacter').css('display', 'none');
+            $('#pickCharacters').css('display', 'none');
+        }
+        console.log(character);
+        console.log(playerTwo);
+    });
 
 
 });
