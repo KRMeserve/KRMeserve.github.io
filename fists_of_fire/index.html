@@ -6,23 +6,36 @@
         <link rel="stylesheet" href="css/style.css">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
+        <script src="js/app2.js" charset="utf-8"></script>
     </head>
     <body>
         <h1>FISTS OF FIRE</h1>
-    </body>
-        <div class="playField">
-            <div id="fightAlertBox"></div>
-            <div class="playerHealthContainer">
-                <div class="playerOneHealth">Player One Health Bar</div>
-                <div class="playerTwoHealth">Player Two Health Bar</div>
-            </div>
-            <div class="playerCharacterContainer">
-                <div class="playerOne">
-                    Player One Goes Here
-                </div>
-                <div class="playerTwo">
-                    Player Two Goes Here
-                </div>
-            </div>
+        <div id="modalPlayerOne">
+            <p>Choose your attack!</p>
+            <p>[w] Click 'w' on the keyboard if you want to attack. This is your basic damage dealing ability. It deals increased damage to the opponent if they are healing.</p>
+            <p>[a] Click 'a' on the keyboard to counter the enemy's attack. If the opponent attacks you, you take no damage and deal double damage back to them instead. Otherwise, this attack does nothing.</p>
+            <p>[s] Click 's' to regroup and heal yourself. You will heal for 15 health on a successful cast. If this is interrupted by an attack, you will take heavy damage instead.</p>
         </div>
+        <div id="modalPlayerTwo">
+            <p>Choose your attack!</p>
+            <p>[i] Click 'i' on the keyboard if you want to attack. This is your basic damage dealing ability. It deals increased damage to the opponent if they are healing.</p>
+            <p>[j] Click 'j' on the keyboard to counter the enemy's attack. If the opponent attacks you, you take no damage and deal double damage back to them instead. Otherwise, this attack does nothing.</p>
+            <p>[k] Click 'k' to regroup and heal yourself. You will heal for 15 health on a successful cast. If this is interrupted by an attack, you will take heavy damage instead.</p>
+        </div>
+            <div class="playField">
+                <div id="fightAlertBox"></div>
+                <div class="playerHealthContainer">
+                    <div class="playerOneHealth">Player One Health Bar</div>
+                    <div class="playerTwoHealth">Player Two Health Bar</div>
+                </div>
+                <div class="playerCharacterContainer">
+                    <div class="playerOne">
+                        Player One Goes Here
+                    </div>
+                    <div class="playerTwo">
+                        Player Two Goes Here
+                    </div>
+                </div>
+            </div>
+    </body>
 </html>

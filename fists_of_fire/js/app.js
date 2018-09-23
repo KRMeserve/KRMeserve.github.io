@@ -3,7 +3,7 @@ let turnTimer = 1;
 
 // Build Fighter Class With Basic Stats and functions. (-- Tested with Logs already! All Functions and stats are retrievable --)
 class Fighter {
-    constructor(name) {
+    constructor(name){
         this.name = name;
         this.health = 100;
         this.attack = 10;
@@ -19,8 +19,9 @@ class Fighter {
     }
     //Heal Function
     heal(){
+
         if (this.health < 100) {
-            this.health += 10;
+            this.health += 15;
         } else {
             return `${this.name} tried to heal, but was already at full health.`
         }
@@ -34,18 +35,21 @@ class Brawler extends Fighter {
         console.log('The special attack has been used by the Brawler');
     }
 }
+
 class Priest extends Fighter {
     //Special Attack
     special(){
         console.log('The special attack has been used by the Priest');
     }
 }
+
 class Knight extends Fighter {
     //Special Attack
     special(){
         console.log('The special attack has been used by the Knight');
     }
 }
+
 class Ranger extends Fighter {
     //Special Attack
     special(){
@@ -87,11 +91,11 @@ $(()=>{
     const playerOneWins = ()=>{
         $('#fightAlertBox').text('Player One has won the game! Please reload the page if you want to play again.');
         return false;
-    }
+    };
     const playerTwoWins = ()=>{
         $('#fightAlertBox').text('Player One has won the game! Please reload the page if you want to play again.');
         return false;
-    }
+    };
     let playerOneRoundsWon = 0;
     let playerTwoRoundsWon = 0;
 
