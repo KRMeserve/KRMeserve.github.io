@@ -100,46 +100,7 @@ $(()=>{
     let playerTwoRoundsWon = 0;
     let playerOneInput = '';
     let playerTwoInput = '';
-    // Player One Round Input Function:
-    const playerOneTurnInput = ()=>{
-        $('#modalOne').css('display', 'block');
-        document.addEventListener('keydown', (event)=>{
-            const keyName = event.key;
-            if (keyName === 'w') {
-                playerOneInput = 'w';
-                $('#modalOne').css('display', 'none');
-                return playerOneInput;
-            } else if (keyName === 'a') {
-                playerOneInput = 'a';
-                $('#modalOne').css('display', 'none');
-                return playerOneInput;
-            } else if (keyName === 's') {
-                playerOneInput = 's';
-                $('#modalOne').css('display', 'none');
-                return playerOneInput;
-            }
-        })
-    }
-    // Player Two Round Input Function:
-    const playerTwoTurnInput = ()=>{
-        $('#modalTwo').css('display', 'block');
-        document.addEventListener('keydown', (event)=>{
-            const keyName = event.key;
-            if (keyName === 'i') {
-                playerTwoInput = 'i';
-                $('#modalTwo').css('display', 'none');
-                return playerTwoInput;
-            } else if (keyName === 'j') {
-                playerTwoInput = 'j';
-                $('#modalTwo').css('display', 'none');
-                return playerTwoInput;
-            } else if (keyName === 'k') {
-                playerTwoInput = 'k';
-                $('#modalTwo').css('display', 'none');
-                return playerTwoInput;
-            }
-        })
-    }
+
 
 
     //Checking to see if someone has won the best of three. If so, it ends the game.
@@ -208,12 +169,16 @@ $(()=>{
             playerOne.health -= (playerTwo.attack * 2);
             console.log(playerOne);
             console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
             checkRoundWin();
             //Player One Counters, Player Two attacks
         } else if (playerOneInput === 'a' && playerTwoInput === 'i') {
             playerTwo.health -= (playerOne.attack * 2);
             console.log(playerOne);
             console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
             checkRoundWin();
             //Player One and Player Two attack
         } else if (playerOneInput === 'w' && playerTwoInput === 'i') {
@@ -221,30 +186,40 @@ $(()=>{
             playerTwo.fight(playerOne);
             console.log(playerOne);
             console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
             checkRoundWin();
             //Player One heals and Player Two attacks
         } else if (playerOneInput === 's' && playerTwoInput === 'i') {
             playerOne.health -= (playerTwo.attack * 2.5);
             console.log(playerOne);
             console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
             checkRoundWin();
             //Player One attacks and player two heals
         } else if (playerOneInput === 'w' && playerTwoInput === 'k'){
             playerTwo.health -= (playerOne.attack * 2.5);
             console.log(playerOne);
             console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
             checkRoundWin();
             //Player One heals and player two counters
         } else if (playerOneInput === 's' && playerTwoInput === 'j') {
             playerOne.heal();
             console.log(playerOne);
             console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
             checkRoundWin();
             //Player one counters and player two heals
         } else if (playerOneInput === 'a' && playerTwoInput === 'k') {
             playerTwo.heal();
             console.log(playerOne);
             console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
             checkRoundWin();
             //Player one heals and player two heals
         } else if (playerOneInput === 's' && playerTwoInput === 'k') {
@@ -252,22 +227,60 @@ $(()=>{
             playerTwo.heal();
             console.log(playerOne);
             console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
             checkRoundWin();
         }
     }
 
     const startPhase = ()=>{
-        // Collect player input.
-        // const playerOneInput = prompt('Choose your attack! w = attack, a = counter, s = heal, d = super', 'w / a / s / d');
+        //Once both players have pushed inputs, the game should continue.
+        const continueGame = ()=>{
+            if (playerOneInput !== '' && playerTwoInput !== ''){
+                turnLengthAnnounce();
+                turnTimer++;
+                calculateRound(playerOneInput, playerTwoInput);
+            }
+        }
+        // Player One Round Input Function:
+        const playerOneTurnInput = ()=>{
+            $('#modalOne').css('display', 'block');
+            document.addEventListener('keydown', (event)=>{
+                let keyName = event.key;
+                if (keyName === 'w') {
+                    playerOneInput = 'w';
+                    $('#modalOne').css('display', 'none');
+                } else if (keyName === 'a') {
+                    playerOneInput = 'a';
+                    $('#modalOne').css('display', 'none');
+                } else if (keyName === 's') {
+                    playerOneInput = 's';
+                    $('#modalOne').css('display', 'none');
+                }
+            })
+        }
+        // Player Two Round Input Function:
+        const playerTwoTurnInput = ()=>{
+            $('#modalTwo').css('display', 'block');
+            document.addEventListener('keydown', (event)=>{
+                let keyName = event.key;
+                if (keyName === 'i') {
+                    playerTwoInput = 'i';
+                    $('#modalTwo').css('display', 'none');
+                    continueGame();
+                } else if (keyName === 'j') {
+                    playerTwoInput = 'j';
+                    $('#modalTwo').css('display', 'none');
+                    continueGame();
+                } else if (keyName === 'k') {
+                    playerTwoInput = 'k';
+                    $('#modalTwo').css('display', 'none');
+                    continueGame();
+                }
+            })
+        }
         playerOneTurnInput();
-        // const playerTwoInput = prompt('Choose your attack! i = attack, j = counter, k = heal, l = super', 'i / j / k / l');
         playerTwoTurnInput();
-        turnLengthAnnounce();
-        turnTimer++;
-        const calculateRoundDelay = ()=>{
-            calculateRound(playerOneInput, playerTwoInput);
-        };
-        setTimeout(calculateRoundDelay, 6000);
     }
 
 
