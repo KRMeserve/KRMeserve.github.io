@@ -62,13 +62,25 @@
     padding-bottom: 20px;
 }
 #playerOneCharacter img, #playerTwoCharacter img {
-    width: 22%;
+    width: 20%;
     height: 70%;
     border: 1px solid grey;
     border-radius: 35px;
-    padding: 1.2%;
+    padding: 2.1%;
     transition: .2s;
+    align-items: center;
 }
 #playerOneCharacter img:hover, #playerTwoCharacter img:hover {
     border: 1px solid orange;
+}
+.playerHealthContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.playerHealthContainer progress {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 300px;
+
 }
