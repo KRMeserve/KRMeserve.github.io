@@ -98,7 +98,48 @@ $(()=>{
     };
     let playerOneRoundsWon = 0;
     let playerTwoRoundsWon = 0;
-
+    let playerOneInput = '';
+    let playerTwoInput = '';
+    // Player One Round Input Function:
+    const playerOneTurnInput = ()=>{
+        $('#modalOne').css('display', 'block');
+        document.addEventListener('keydown', (event)=>{
+            const keyName = event.key;
+            if (keyName === 'w') {
+                playerOneInput = 'w';
+                $('#modalOne').css('display', 'none');
+                return playerOneInput;
+            } else if (keyName === 'a') {
+                playerOneInput = 'a';
+                $('#modalOne').css('display', 'none');
+                return playerOneInput;
+            } else if (keyName === 's') {
+                playerOneInput = 's';
+                $('#modalOne').css('display', 'none');
+                return playerOneInput;
+            }
+        })
+    }
+    // Player Two Round Input Function:
+    const playerTwoTurnInput = ()=>{
+        $('#modalTwo').css('display', 'block');
+        document.addEventListener('keydown', (event)=>{
+            const keyName = event.key;
+            if (keyName === 'i') {
+                playerTwoInput = 'i';
+                $('#modalTwo').css('display', 'none');
+                return playerTwoInput;
+            } else if (keyName === 'j') {
+                playerTwoInput = 'j';
+                $('#modalTwo').css('display', 'none');
+                return playerTwoInput;
+            } else if (keyName === 'k') {
+                playerTwoInput = 'k';
+                $('#modalTwo').css('display', 'none');
+                return playerTwoInput;
+            }
+        })
+    }
 
 
     //Checking to see if someone has won the best of three. If so, it ends the game.
@@ -217,8 +258,10 @@ $(()=>{
 
     const startPhase = ()=>{
         // Collect player input.
-        const playerOneInput = prompt('Choose your attack! w = attack, a = counter, s = heal, d = super', 'w / a / s / d');
-        const playerTwoInput = prompt('Choose your attack! i = attack, j = counter, k = heal, l = super', 'i / j / k / l');
+        // const playerOneInput = prompt('Choose your attack! w = attack, a = counter, s = heal, d = super', 'w / a / s / d');
+        playerOneTurnInput();
+        // const playerTwoInput = prompt('Choose your attack! i = attack, j = counter, k = heal, l = super', 'i / j / k / l');
+        playerTwoTurnInput();
         turnLengthAnnounce();
         turnTimer++;
         const calculateRoundDelay = ()=>{
