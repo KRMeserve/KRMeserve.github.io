@@ -103,6 +103,7 @@ $(()=>{
     let playerTwoRoundsWon = 0;
     let playerOneInput = '';
     let playerTwoInput = '';
+    let playerInputCount = 0;
 
 
 
@@ -249,7 +250,8 @@ $(()=>{
     const startPhase = ()=>{
         //Once both players have pushed inputs, the game should continue.
         const continueGame = ()=>{
-            if (playerOneInput !== '' && playerTwoInput !== ''){
+            if (playerInputCount === 2){
+                playerInputCount = 0;
                 turnLengthAnnounce();
                 turnTimer++;
                 const calculateRoundDelay = ()=>{
@@ -265,14 +267,20 @@ $(()=>{
             if (keyName === 'w') {
                 playerOneInput = 'w';
                 $('#modalOne').css('display', 'none');
+                playerInputCount++;
+                continueGame();
                 document.removeEventListener('keydown', playerOneEventListener);
             } else if (keyName === 'a') {
                 playerOneInput = 'a';
                 $('#modalOne').css('display', 'none');
+                playerInputCount++;
+                continueGame();
                 document.removeEventListener('keydown', playerOneEventListener);
             } else if (keyName === 's') {
                 playerOneInput = 's';
                 $('#modalOne').css('display', 'none');
+                playerInputCount++;
+                continueGame();
                 document.removeEventListener('keydown', playerOneEventListener);
             }
         }
@@ -282,14 +290,20 @@ $(()=>{
             if (keyName === 'i') {
                 playerTwoInput = 'i';
                 $('#modalTwo').css('display', 'none');
+                playerInputCount++;
+                continueGame();
                 document.removeEventListener('keydown', playerTwoEventListener);
             } else if (keyName === 'j') {
                 playerTwoInput = 'j';
                 $('#modalTwo').css('display', 'none');
+                playerInputCount++;
+                continueGame();
                 document.removeEventListener('keydown', playerTwoEventListener);
             } else if (keyName === 'k') {
                 playerTwoInput = 'k';
                 $('#modalTwo').css('display', 'none');
+                playerInputCount++;
+                continueGame();
                 document.removeEventListener('keydown', playerTwoEventListener);
             }
         }
@@ -306,8 +320,6 @@ $(()=>{
 
         playerOneTurnInput();
         playerTwoTurnInput();
-
-        setTimeout(continueGame, 15000);
     }
 
 
