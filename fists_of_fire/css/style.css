@@ -91,6 +91,23 @@ html{
     appearance: none;
     height: 20px;
     width: 300px;
+    border-radius: 3px;
+}
+progress::-moz-progress-value {
+     background: green;
+     border-radius: 3px;
+}
+progress::-moz-progress-bar {
+     background: red;
+     border-radius: 3px;
+}
+progress::-webkit-progress-value {
+     background: green;
+     border-radius: 3px;
+}
+progress::-webkit-progress-bar {
+    background: red;
+    border-radius: 3px;
 }
 .playerCharacterContainer {
     height: 70%;
