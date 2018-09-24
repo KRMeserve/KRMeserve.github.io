@@ -175,7 +175,7 @@ $(()=>{
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            checkRoundWin();
+            setTimeout(checkRoundWin, 4000);
             //Player One Counters, Player Two attacks
         } else if (playerOneInput === 'a' && playerTwoInput === 'i') {
             playerTwo.health -= (playerOne.attack * 2);
@@ -184,7 +184,7 @@ $(()=>{
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            checkRoundWin();
+            setTimeout(checkRoundWin, 4000);
             //Player One and Player Two attack
         } else if (playerOneInput === 'w' && playerTwoInput === 'i') {
             playerOne.fight(playerTwo);
@@ -195,7 +195,7 @@ $(()=>{
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            checkRoundWin();
+            setTimeout(checkRoundWin, 4000);
             //Player One heals and Player Two attacks
         } else if (playerOneInput === 's' && playerTwoInput === 'i') {
             playerOne.health -= (playerTwo.attack * 2.5);
@@ -204,7 +204,7 @@ $(()=>{
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            checkRoundWin();
+            setTimeout(checkRoundWin, 4000);
             //Player One attacks and player two heals
         } else if (playerOneInput === 'w' && playerTwoInput === 'k'){
             playerTwo.health -= (playerOne.attack * 2.5);
@@ -213,7 +213,7 @@ $(()=>{
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            checkRoundWin();
+            setTimeout(checkRoundWin, 4000);
             //Player One heals and player two counters
         } else if (playerOneInput === 's' && playerTwoInput === 'j') {
             playerOne.heal();
@@ -222,7 +222,7 @@ $(()=>{
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            checkRoundWin();
+            setTimeout(checkRoundWin, 4000);
             //Player one counters and player two heals
         } else if (playerOneInput === 'a' && playerTwoInput === 'k') {
             playerTwo.heal();
@@ -231,7 +231,7 @@ $(()=>{
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            checkRoundWin();
+            setTimeout(checkRoundWin, 4000);
             //Player one heals and player two heals
         } else if (playerOneInput === 's' && playerTwoInput === 'k') {
             playerOne.heal();
@@ -242,7 +242,7 @@ $(()=>{
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            checkRoundWin();
+            setTimeout(checkRoundWin, 4000);
         }
     }
 
@@ -252,43 +252,58 @@ $(()=>{
             if (playerOneInput !== '' && playerTwoInput !== ''){
                 turnLengthAnnounce();
                 turnTimer++;
-                calculateRound(playerOneInput, playerTwoInput);
+                const calculateRoundDelay = ()=>{
+                    calculateRound(playerOneInput, playerTwoInput);
+                }
+                setTimeout(calculateRoundDelay, 6000);
+            }
+        }
+
+        // Player One Event Listener Functions
+        const playerOneEventListener = (event)=>{
+            let keyName = event.key;
+            if (keyName === 'w') {
+                playerOneInput = 'w';
+                $('#modalOne').css('display', 'none');
+                document.removeEventListener('keydown', playerOneEventListener);
+            } else if (keyName === 'a') {
+                playerOneInput = 'a';
+                $('#modalOne').css('display', 'none');
+                document.removeEventListener('keydown', playerOneEventListener);
+            } else if (keyName === 's') {
+                playerOneInput = 's';
+                $('#modalOne').css('display', 'none');
+                document.removeEventListener('keydown', playerOneEventListener);
+            }
+        }
+        // Player Two Event Listener Functions
+        const playerTwoEventListener = (event)=>{
+            let keyName = event.key;
+            if (keyName === 'i') {
+                playerTwoInput = 'i';
+                $('#modalTwo').css('display', 'none');
+                document.removeEventListener('keydown', playerTwoEventListener);
+            } else if (keyName === 'j') {
+                playerTwoInput = 'j';
+                $('#modalTwo').css('display', 'none');
+                document.removeEventListener('keydown', playerTwoEventListener);
+            } else if (keyName === 'k') {
+                playerTwoInput = 'k';
+                $('#modalTwo').css('display', 'none');
+                document.removeEventListener('keydown', playerTwoEventListener);
             }
         }
         // Player One Round Input Function:
         const playerOneTurnInput = ()=>{
             $('#modalOne').css('display', 'block');
-            document.addEventListener('keydown', (event)=>{
-                let keyName = event.key;
-                if (keyName === 'w') {
-                    playerOneInput = 'w';
-                    $('#modalOne').css('display', 'none');
-                } else if (keyName === 'a') {
-                    playerOneInput = 'a';
-                    $('#modalOne').css('display', 'none');
-                } else if (keyName === 's') {
-                    playerOneInput = 's';
-                    $('#modalOne').css('display', 'none');
-                }
-            })
+            document.addEventListener('keydown', playerOneEventListener);
         }
         // Player Two Round Input Function:
         const playerTwoTurnInput = ()=>{
             $('#modalTwo').css('display', 'block');
-            document.addEventListener('keydown', (event)=>{
-                let keyName = event.key;
-                if (keyName === 'i') {
-                    playerTwoInput = 'i';
-                    $('#modalTwo').css('display', 'none');
-                } else if (keyName === 'j') {
-                    playerTwoInput = 'j';
-                    $('#modalTwo').css('display', 'none');
-                } else if (keyName === 'k') {
-                    playerTwoInput = 'k';
-                    $('#modalTwo').css('display', 'none');
-                }
-            })
+            document.addEventListener('keydown', playerTwoEventListener)
         }
+
         playerOneTurnInput();
         playerTwoTurnInput();
 
@@ -339,7 +354,7 @@ $(()=>{
             $('#playerTwoCharacter').css('display', 'flex');
         } else if (character === 'rangerOne') {
             playerOne = rangerOne;
-            $('.playerOne').attr('src', 'http://www.pngmart.com/files/6/Archer-Transparent-PNG.png');
+            $('.playerOne').attr('src', 'https://img00.deviantart.net/2587/i/2012/209/0/6/ffxiv_hyur_archer_by_american_paladin-d58w4ss.png');
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
         }
@@ -365,7 +380,7 @@ $(()=>{
             $('#pickCharacters').css('display', 'none');
         } else if (character === 'rangerTwo') {
             playerTwo = rangerTwo;
-            $('.playerTwo').attr('src', 'http://www.pngmart.com/files/6/Archer-Transparent-PNG.png');
+            $('.playerTwo').attr('src', 'https://img00.deviantart.net/2587/i/2012/209/0/6/ffxiv_hyur_archer_by_american_paladin-d58w4ss.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
         }
