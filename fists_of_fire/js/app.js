@@ -424,24 +424,28 @@ $(()=>{
             $('.playerTwo').attr('src', 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/342/420/618/636272680339895080.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
+            $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
         } else if (character === 'priestTwo') {
             playerTwo = priestTwo;
             $('.playerTwo').attr('src', 'https://i.pinimg.com/originals/5c/aa/17/5caa172e75d7fcc0369b431ab53c224a.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
+            $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
         } else if (character === 'knightTwo') {
             playerTwo = knightTwo;
             $('.playerTwo').attr('src', 'https://i.pinimg.com/originals/cc/d9/d3/ccd9d348e2f084d1d84de8e3e2f0b1f4.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
+            $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
         } else if (character === 'rangerTwo') {
             playerTwo = rangerTwo;
             $('.playerTwo').attr('src', 'https://img00.deviantart.net/2587/i/2012/209/0/6/ffxiv_hyur_archer_by_american_paladin-d58w4ss.png');
             $('#playerTwoCharacter').css('display', 'none');
             $('#pickCharacters').css('display', 'none');
+            $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
         }
         console.log(character);

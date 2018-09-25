@@ -1,15 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Frijole|Philosopher:400,700');
 html{
     background-color: black;
-    color: orange;
+    color: #bf5d37;
     text-align: center;
+    font-family: 'Philosopher', sans-serif;
+}
+body {
+    margin: 0;
+}
+h1 {
+    font-family: 'Frijole', cursive;
+    margin: 0;
+    padding: 2%;
+    background: url('https://www.escapemotions.com/images/meta/fb-flamepainter-free.jpg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    text-shadow: 2px 2px black;
+    font-size: 3em;
 }
 .start-fight {
-    background-color: yellow;
-    width: 100px;
+    background-color: #bf5d37;
+    width: 120px;
     text-align: center;
     padding: 15px;
     margin: 0 auto;
     cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    transform: translateY(-200px);
+    display: none;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: .2s;
+}
+.start-fight:hover {
+    border: 2px solid #cecdb9;
+    background-color: #872701;
 }
 #fightAlertBox {
     font-size: 3em;
@@ -17,6 +43,7 @@ html{
     width: 40%;
     height: 50px;
     margin: 0 auto;
+    color: white;
 }
 #modalOne, #modalTwo {
     width: 100%;
@@ -96,7 +123,7 @@ html{
     -webkit-appearance: none;
     appearance: none;
     height: 20px;
-    width: 300px;
+    width: 400px;
     border-radius: 3px;
 }
 progress::-moz-progress-value {
@@ -121,23 +148,34 @@ progress::-webkit-progress-bar {
     max-height: 500px;
 }
 .playField {
-    background-image: url('https://static.giantbomb.com/uploads/original/11/118253/1685434-kahnsarena.png');
+    background-image: url('http://images.gamersyde.com/image_tekken_7-30495-3036_0033.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    min-height: 500px;
+    min-height: 700px;
     margin: 0;
+    padding-top: 0px;
+}
+@media screen and (max-width: 1700px) {
+    .playField {
+        min-height: 600px;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .playField {
+        min-height: 500px;
+    }
 }
 .playerOne {
     width: 20%;
-    min-width: 150px;
+    min-width: 200px;
     max-width: 350px;
 }
 .playerTwo {
     width: 20%;
     margin-left: 40%;
-    min-width: 150px;
+    min-width: 200px;
 }
 .playerNames {
     display: flex;
@@ -150,6 +188,6 @@ progress::-webkit-progress-bar {
 #playerOneName, #playerTwoName {
     background-color: rgba(255, 255, 255, 0.8);
     height: 27px;
-    width: 12%;
+    width: 10%;
     color: #c46907;
 }
