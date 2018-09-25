@@ -325,6 +325,15 @@ $(()=>{
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
+        // Both players use counter --- nothing happens
+        } else if (playerOneInput === 'a' && playerTwoInput === 'j') {
+            $('.animationPlayerOne').text('COUNTER');
+            $('.animationPlayerTwo').text('COUNTER');
+            console.log(playerOne);
+            console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
+            setTimeout(checkRoundWin, 6000);
         }
     }
 
