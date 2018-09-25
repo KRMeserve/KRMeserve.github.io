@@ -22,7 +22,7 @@ h1 {
     background-color: #bf5d37;
     width: 120px;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     margin: 0 auto;
     cursor: pointer;
     color: white;
@@ -31,11 +31,24 @@ h1 {
     display: none;
     border-radius: 5px;
     border: 2px solid transparent;
-    transition: .2s;
+    position: relative;
+    animation: startFightAnimation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
-.start-fight:hover {
-    border: 2px solid #cecdb9;
-    background-color: #872701;
+@keyframes startFightAnimation {
+    0%{
+        border: 2px solid transparent;
+        background-color: #bf5d37;
+    }
+    50%{
+        border: 2px solid #cecdb9;
+        background-color: #872701;
+    }
+    100%{
+        border: 2px solid transparent;
+        background-color: #bf5d37;
+    }
 }
 #fightAlertBox {
     font-size: 3em;
@@ -67,7 +80,7 @@ h1 {
 #modalPlayerTwo {
     width: 30%;
     background-color: rgba(255,255,255,0.9);
-    margin: 10% 50%;
+    margin: 10% 55%;
     padding: 15px;
     border-radius: 10px;
     color: black;
@@ -182,7 +195,7 @@ progress::-webkit-progress-bar {
     justify-content: space-between;
     padding-bottom: 0;
     margin-bottom: 0;
-    height: 30px;
+    height: 27px;
     font-size: 1.3em;
 }
 #playerOneName, #playerTwoName {
@@ -190,4 +203,5 @@ progress::-webkit-progress-bar {
     height: 27px;
     width: 10%;
     color: #c46907;
+    border-radius: 5px;
 }
