@@ -1,79 +1,99 @@
-// Global Constants go up here!
-let turnTimer = 1;
+$(()=>{
+    // Global Constants go up here!
+    let turnTimer = 1;
 
-// Build Fighter Class With Basic Stats and functions. (-- Tested with Logs already! All Functions and stats are retrievable --)
-class Fighter {
-    constructor(name){
-        this.name = name;
-        this.health = 100;
-        this.attack = 10;
-    }
-    //Attack function
-    fight(enemy){
-        enemy.health -= this.attack;
-        console.log('Hyah! Attack has been made!');
-    }
-    //Counter function
-    counter(){
-        console.log(`${this.name} has countered.`);
-    }
-    //Heal Function
-    heal(){
+    // Build Fighter Class With Basic Stats and functions. (-- Tested with Logs already! All Functions and stats are retrievable --)
+    class Fighter {
+        constructor(name){
+            this.name = name;
+            this.health = 100;
+            this.attack = 10;
+        }
+        //Attack function
+        fight(enemy){
+            enemy.health -= this.attack;
+        }
+        //Counter function
+        counter(){
+            console.log(`${this.name} has countered.`);
+        }
+        //Heal Function
+        heal(){
 
-        if (this.health < 100) {
-            this.health += 15;
-        } else {
-            return `${this.name} tried to heal, but was already at full health.`
+            if (this.health < 100) {
+                this.health += 15;
+            } else {
+                return `${this.name} tried to heal, but was already at full health.`
+            }
+        }
+    };
+
+    // Build Character Class extending on Fighter for every Unique Character (Add the ability) (-- Tested with Logs already! All functions and stats are retrievable --)
+    class Brawler extends Fighter {
+        //Special Attack
+        specialPlayerOne(enemy){
+            enemy.health -= 20;
+            playerTwoHealthBarValue.value -= 20;
+        }
+        specialPlayerTwo(enemy){
+            enemy.health -= 20;
+            playerOneHealthBarValue.value -= 20;
         }
     }
-};
 
-// Build Character Class extending on Fighter for every Unique Character (Add the ability) (-- Tested with Logs already! All functions and stats are retrievable --)
-class Brawler extends Fighter {
-    //Special Attack
-    special(){
-        console.log('The special attack has been used by the Brawler');
+    class Priest extends Fighter {
+        //Special Attack
+        specialPlayerOne(enemy){
+            enemy.health -= 5;
+            this.health += 15;
+        }
+        specialPlayerTwo(enemy){
+            enemy.health -= 5;
+            this.health += 15;
+        }
     }
-}
 
-class Priest extends Fighter {
-    //Special Attack
-    special(){
-        console.log('The special attack has been used by the Priest');
+    class Knight extends Fighter {
+        //Special Attack
+        specialPlayerOne(enemy){
+            enemy.health -= 15;
+            this.health += 5;
+        }
+        specialPlayerTwo(enemy){
+            enemy.health -= 15;
+            this.health += 5;
+        }
     }
-}
 
-class Knight extends Fighter {
-    //Special Attack
-    special(){
-        console.log('The special attack has been used by the Knight');
+    class Ranger extends Fighter {
+        //Special Attack
+        specialPlayerOne(enemy){
+            enemy.health -= 10;
+            this.health += 10;
+        }
+        specialPlayerTwo(enemy){
+            enemy.health -= 10;
+            this.health += 10;
+        }
     }
-}
 
-class Ranger extends Fighter {
-    //Special Attack
-    special(){
-        console.log('The special attack has been used by the Ranger');
-    }
-}
+    //List of Playable Characters, one for each player.
+    const brawlerOne = new Brawler('GARR');
+    const priestOne = new Priest('Lillian');
+    const knightOne = new Knight('Sir Grant');
+    const rangerOne = new Ranger('Outlaw');
+    const brawlerTwo = new Brawler('GARR');
+    const priestTwo = new Priest('Lillian');
+    const knightTwo = new Knight('Sir Grant');
+    const rangerTwo = new Ranger('Outlaw');
 
-//List of Playable Characters, one for each player.
-const brawlerOne = new Brawler('GARR');
-const priestOne = new Priest('Lillian');
-const knightOne = new Knight('Sir Grant');
-const rangerOne = new Ranger('Outlaw');
-const brawlerTwo = new Brawler('GARR');
-const priestTwo = new Priest('Lillian');
-const knightTwo = new Knight('Sir Grant');
-const rangerTwo = new Ranger('Outlaw');
-
-// const playerOne = brawlerOne;
-// const playerTwo = knightTwo;
+    // const playerOne = brawlerOne;
+    // const playerTwo = knightTwo;
 
 
 
-// Document Ready Function Goes at the bottom of page, no functions below this one!
-$(()=>{
+    // Document Ready Function Goes at the bottom of page, no functions below this one!
+
     // NEED TO BUILD ====== Section where players get to choose their characters and save them to these constants.
     let playerOne = brawlerOne;
     let playerTwo = knightTwo;
@@ -244,6 +264,14 @@ $(()=>{
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 4000);
+        } else if (playerOneInput === 'd' && playerTwoInput === 'l') {
+            playerOne.specialPlayerOne(playerTwo);
+            playerTwo.specialPlayerTwo(playerOne);
+            console.log(playerOne);
+            console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
+            setTimeout(checkRoundWin, 4000);
         }
     }
 
@@ -282,6 +310,12 @@ $(()=>{
                 playerInputCount++;
                 continueGame();
                 document.removeEventListener('keydown', playerOneEventListener);
+            } else if (keyName === 'd') {
+                playerOneInput = 'd';
+                $('#modalOne').css('display', 'none');
+                playerInputCount++;
+                continueGame();
+                document.removeEventListener('keydown', playerOneEventListener);
             }
         }
         // Player Two Event Listener Functions
@@ -301,6 +335,12 @@ $(()=>{
                 document.removeEventListener('keydown', playerTwoEventListener);
             } else if (keyName === 'k') {
                 playerTwoInput = 'k';
+                $('#modalTwo').css('display', 'none');
+                playerInputCount++;
+                continueGame();
+                document.removeEventListener('keydown', playerTwoEventListener);
+            } else if (keyName === 'l') {
+                playerTwoInput = 'l';
                 $('#modalTwo').css('display', 'none');
                 playerInputCount++;
                 continueGame();

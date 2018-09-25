@@ -117,12 +117,16 @@ progress::-webkit-progress-bar {
 .playField {
     background-image: url('https://static.giantbomb.com/uploads/original/11/118253/1685434-kahnsarena.png');
     background-position: center;
-    height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 500px;
     margin: 0;
 }
 .playerOne {
     width: 20%;
     min-width: 150px;
+    max-width: 350px;
 }
 .playerTwo {
     width: 20%;
