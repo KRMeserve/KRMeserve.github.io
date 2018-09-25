@@ -217,7 +217,7 @@ progress::-webkit-progress-bar {
     font-size: 2em;
     transform: translate(0px, -250px);
     animation-name: playerOneAttackText;
-    animation-duration: 5s;
+    animation-duration: 6s;
     animation-iteration-count: infinite;
 }
 .animationPlayerTwo {
@@ -227,7 +227,7 @@ progress::-webkit-progress-bar {
     font-size: 2em;
     transform: translate(0px, -250px);
     animation-name: playerOneAttackText;
-    animation-duration: 5s;
+    animation-duration: 6s;
     animation-iteration-count: infinite;
 }
 @keyframes playerOneAttackText {
@@ -236,9 +236,14 @@ progress::-webkit-progress-bar {
         width: 30px;
         transform: translate(0px, -250px);
     }
-    100% {
+    50% {
         height: 30px;
         width: 30px;
         transform: translate(0px, -400px) ;
+    }
+    100% {
+        height: 30px;
+        width: 30px;
+        transform: translate(0px, -250px);
     }
 }
