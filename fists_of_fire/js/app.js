@@ -46,10 +46,14 @@ $(()=>{
         specialPlayerOne(enemy){
             enemy.health -= 5;
             this.health += 15;
+            playerTwoHealthBarValue.value -= 5;
+            playerOneHealthBarValue.value += 15;
         }
         specialPlayerTwo(enemy){
             enemy.health -= 5;
             this.health += 15;
+            playerTwoHealthBarValue.value += 15;
+            playerOneHealthBarValue.value -= 5;
         }
     }
 
@@ -58,10 +62,14 @@ $(()=>{
         specialPlayerOne(enemy){
             enemy.health -= 15;
             this.health += 5;
+            playerTwoHealthBarValue.value -= 15;
+            playerOneHealthBarValue.value += 5;
         }
         specialPlayerTwo(enemy){
             enemy.health -= 15;
             this.health += 5;
+            playerTwoHealthBarValue.value -= 15;
+            playerOneHealthBarValue.value += 5;
         }
     }
 
@@ -70,10 +78,14 @@ $(()=>{
         specialPlayerOne(enemy){
             enemy.health -= 10;
             this.health += 10;
+            playerTwoHealthBarValue.value -= 10;
+            playerOneHealthBarValue.value += 10;
         }
         specialPlayerTwo(enemy){
             enemy.health -= 10;
             this.health += 10;
+            playerOneHealthBarValue.value -= 10;
+            playerTwoHealthBarValue.value += 10;
         }
     }
 
@@ -141,6 +153,8 @@ $(()=>{
 
 
     const checkRoundWin = ()=>{
+        $('.animationPlayerOne').empty();
+        $('.animationPlayerTwo').empty();
         //Checking who has 0 health and awarding a win to the victor (or a draw)
         if (playerOne.health > 0 && playerTwo.health <= 0) {
             const playerOneWinsMessageOne = ()=>{
@@ -192,86 +206,125 @@ $(()=>{
         if (playerOneInput === 'w' && playerTwoInput === 'j') {
             playerOne.health -= (playerTwo.attack * 2);
             playerOneHealthBarValue.value -= (playerTwo.attack * 2);
+            $('.animationPlayerOne').text('ATTACK');
+            $('.animationPlayerTwo').text('COUNTER');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
             //Player One Counters, Player Two attacks
         } else if (playerOneInput === 'a' && playerTwoInput === 'i') {
             playerTwo.health -= (playerOne.attack * 2);
             playerTwoHealthBarValue.value -= (playerOne.attack * 2);
+            $('.animationPlayerOne').text('COUNTER');
+            $('.animationPlayerTwo').text('ATTACK');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
             //Player One and Player Two attack
         } else if (playerOneInput === 'w' && playerTwoInput === 'i') {
             playerOne.fight(playerTwo);
             playerTwo.fight(playerOne);
             playerOneHealthBarValue.value -= 10;
             playerTwoHealthBarValue.value -= 10;
+            $('.animationPlayerOne').text('ATTACK');
+            $('.animationPlayerTwo').text('ATTACK');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
             //Player One heals and Player Two attacks
         } else if (playerOneInput === 's' && playerTwoInput === 'i') {
             playerOne.health -= (playerTwo.attack * 2.5);
             playerOneHealthBarValue.value -= (playerTwo.attack * 2.5);
+            $('.animationPlayerOne').text('HEAL');
+            $('.animationPlayerTwo').text('ATTACK');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
             //Player One attacks and player two heals
         } else if (playerOneInput === 'w' && playerTwoInput === 'k'){
             playerTwo.health -= (playerOne.attack * 2.5);
             playerTwoHealthBarValue.value -= (playerTwo.attack * 2.5);
+            $('.animationPlayerOne').text('ATTACK');
+            $('.animationPlayerTwo').text('HEAL');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
             //Player One heals and player two counters
         } else if (playerOneInput === 's' && playerTwoInput === 'j') {
             playerOne.heal();
             playerOneHealthBarValue.value += 15;
+            $('.animationPlayerOne').text('HEAL');
+            $('.animationPlayerTwo').text('COUNTER');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
             //Player one counters and player two heals
         } else if (playerOneInput === 'a' && playerTwoInput === 'k') {
             playerTwo.heal();
             playerTwoHealthBarValue.value += 15;
+            $('.animationPlayerOne').text('COUNTER');
+            $('.animationPlayerTwo').text('HEAL');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
             //Player one heals and player two heals
         } else if (playerOneInput === 's' && playerTwoInput === 'k') {
             playerOne.heal();
             playerTwo.heal();
             playerOneHealthBarValue.value += 15;
             playerTwoHealthBarValue.value += 15;
+            $('.animationPlayerOne').text('HEAL');
+            $('.animationPlayerTwo').text('HEAL');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
+            //Player one and player two both use special
         } else if (playerOneInput === 'd' && playerTwoInput === 'l') {
             playerOne.specialPlayerOne(playerTwo);
             playerTwo.specialPlayerTwo(playerOne);
+            $('.animationPlayerOne').text('SPECIAL');
+            $('.animationPlayerTwo').text('SPECIAL');
             console.log(playerOne);
             console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 4000);
+            setTimeout(checkRoundWin, 6000);
+            //Player One uses special and Player Two doesn't
+        } else if (playerOneInput === 'd' && playerTwoInput !== 'l') {
+            playerOne.specialPlayerOne(playerTwo);
+            $('.animationPlayerOne').text('SPECIAL');
+            $('.animationPlayerTwo').text('BLOCKED BY SPECIAL');
+            console.log(playerOne);
+            console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
+            setTimeout(checkRoundWin, 6000);
+            //Player Two uses special and Player One doesn't
+        } else if (playerOneInput !== 'd' && playerTwoInput === 'l') {
+            playerTwo.specialPlayerTwo(playerOne);
+            $('.animationPlayerOne').text('BLOCKED BY SPECIAL');
+            $('.animationPlayerTwo').text('SPECIAL');
+            console.log(playerOne);
+            console.log(playerTwo);
+            playerOneInput = '';
+            playerTwoInput = '';
+            setTimeout(checkRoundWin, 6000);
         }
     }
 
