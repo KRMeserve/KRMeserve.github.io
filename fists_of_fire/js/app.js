@@ -438,6 +438,7 @@ $(()=>{
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
+            $('#modalPlayerOne').append('The Barbarian Special Attack deals 20 unblockable damage to the enemy.');
         } else if (character === 'priestOne') {
             playerOne = priestOne;
             $('.playerOne').attr('src', 'https://i.pinimg.com/originals/5c/aa/17/5caa172e75d7fcc0369b431ab53c224a.png');
@@ -445,12 +446,14 @@ $(()=>{
             $('.playerOne').css('transform', 'scaleX(-1)');
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
+            $('#modalPlayerOne').append('The Priest Special Attack deals 5 unblockable damage to the enemy and heals for 15.');
         } else if (character === 'knightOne') {
             playerOne = knightOne;
             $('.playerOne').attr('src', 'https://i.pinimg.com/originals/cc/d9/d3/ccd9d348e2f084d1d84de8e3e2f0b1f4.png');
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
+            $('#modalPlayerOne').append('The Knight Special Attack deals 15 unblockable damage to the enemy and heals for 5.');
         } else if (character === 'rangerOne') {
             playerOne = rangerOne;
             $('.playerOne').attr('src', 'https://img00.deviantart.net/2587/i/2012/209/0/6/ffxiv_hyur_archer_by_american_paladin-d58w4ss.png');
@@ -458,6 +461,7 @@ $(()=>{
             $('.playerOne').css('transform', 'scaleX(-1)');
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
+            $('#modalPlayerOne').append('The Ranger Special Attack deals 10 unblockable damage to the enemy and heals for 10.');
         }
     });
     $('#playerTwoCharacter>.characterSelect>img').on('click', (event)=>{
@@ -470,6 +474,7 @@ $(()=>{
             $('.start-fight').css('display', 'block');
             $('.playerTwo').css('transform', 'scaleX(-1)');
             $('#playerTwoName').text(playerTwo.name);
+            $('#modalPlayerTwo').append('The Barbarian Special Attack deals 20 unblockable damage to the enemy.');
         } else if (character === 'priestTwo') {
             playerTwo = priestTwo;
             $('.playerTwo').attr('src', 'https://i.pinimg.com/originals/5c/aa/17/5caa172e75d7fcc0369b431ab53c224a.png');
@@ -477,6 +482,7 @@ $(()=>{
             $('#pickCharacters').css('display', 'none');
             $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
+            $('#modalPlayerTwo').append('The Priest Special Attack deals 5 unblockable damage to the enemy and heals for 15.');
         } else if (character === 'knightTwo') {
             playerTwo = knightTwo;
             $('.playerTwo').attr('src', 'https://i.pinimg.com/originals/cc/d9/d3/ccd9d348e2f084d1d84de8e3e2f0b1f4.png');
@@ -485,6 +491,7 @@ $(()=>{
             $('#pickCharacters').css('display', 'none');
             $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
+            $('#modalPlayerTwo').append('The Knight Special Attack deals 15 unblockable damage to the enemy and heals for 5.');
         } else if (character === 'rangerTwo') {
             playerTwo = rangerTwo;
             $('.playerTwo').attr('src', 'https://img00.deviantart.net/2587/i/2012/209/0/6/ffxiv_hyur_archer_by_american_paladin-d58w4ss.png');
@@ -492,6 +499,7 @@ $(()=>{
             $('#pickCharacters').css('display', 'none');
             $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
+            $('#modalPlayerTwo').append('The Ranger Special Attack deals 10 unblockable damage to the enemy and heals for 10.');
         }
     });
 
