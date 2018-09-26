@@ -15,7 +15,6 @@ $(()=>{
         }
         //Counter function
         counter(){
-            console.log(`${this.name} has countered.`);
         }
         //Heal Function
         heal(){
@@ -68,8 +67,8 @@ $(()=>{
         specialPlayerTwo(enemy){
             enemy.health -= 15;
             this.health += 5;
-            playerTwoHealthBarValue.value -= 15;
-            playerOneHealthBarValue.value += 5;
+            playerOneHealthBarValue.value -= 15;
+            playerTwoHealthBarValue.value += 5;
         }
     }
 
@@ -136,6 +135,8 @@ $(()=>{
     let playerOneInput = '';
     let playerTwoInput = '';
     let playerInputCount = 0;
+    let playerOneSpecial = 1;
+    let playerTwoSpecial = 1;
 
 
 
@@ -169,7 +170,6 @@ $(()=>{
             playerOneWinsMessageOne();
             setTimeout(playerOneWinsMessageTwo, 5000)
             setTimeout(checkGameWin, 12000);
-            console.log(playerOneRoundsWon);
         } else if (playerTwo.health > 0 && playerOne.health <= 0) {
             const playerTwoWinsMessageOne = ()=>{
                 $('#fightAlertBox').text('Player Two Wins This Round!');
@@ -183,7 +183,6 @@ $(()=>{
             playerTwoWinsMessageOne();
             setTimeout(playerTwoWinsMessageTwo, 5000)
             setTimeout(checkGameWin, 12000);
-            console.log(playerTwoRoundsWon);
         } else if (playerTwo.health <= 0 && playerOne.health <= 0){
             const playersDraw = ()=>{
                 $('#fightAlertBox').text('Draw! Both players lost. Rematch!');
@@ -208,8 +207,6 @@ $(()=>{
             playerOneHealthBarValue.value -= (playerTwo.attack * 2);
             $('.animationPlayerOne').text('ATTACK');
             $('.animationPlayerTwo').text('COUNTER');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -219,8 +216,6 @@ $(()=>{
             playerTwoHealthBarValue.value -= (playerOne.attack * 2);
             $('.animationPlayerOne').text('COUNTER');
             $('.animationPlayerTwo').text('ATTACK');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -232,8 +227,6 @@ $(()=>{
             playerTwoHealthBarValue.value -= 10;
             $('.animationPlayerOne').text('ATTACK');
             $('.animationPlayerTwo').text('ATTACK');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -243,8 +236,6 @@ $(()=>{
             playerOneHealthBarValue.value -= (playerTwo.attack * 2.5);
             $('.animationPlayerOne').text('HEAL');
             $('.animationPlayerTwo').text('ATTACK');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -254,8 +245,6 @@ $(()=>{
             playerTwoHealthBarValue.value -= (playerTwo.attack * 2.5);
             $('.animationPlayerOne').text('ATTACK');
             $('.animationPlayerTwo').text('HEAL');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -265,8 +254,6 @@ $(()=>{
             playerOneHealthBarValue.value += 15;
             $('.animationPlayerOne').text('HEAL');
             $('.animationPlayerTwo').text('COUNTER');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -276,8 +263,6 @@ $(()=>{
             playerTwoHealthBarValue.value += 15;
             $('.animationPlayerOne').text('COUNTER');
             $('.animationPlayerTwo').text('HEAL');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -289,8 +274,6 @@ $(()=>{
             playerTwoHealthBarValue.value += 15;
             $('.animationPlayerOne').text('HEAL');
             $('.animationPlayerTwo').text('HEAL');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -300,8 +283,8 @@ $(()=>{
             playerTwo.specialPlayerTwo(playerOne);
             $('.animationPlayerOne').text('SPECIAL');
             $('.animationPlayerTwo').text('SPECIAL');
-            console.log(playerOne);
-            console.log(playerTwo);
+            playerOneSpecial--;
+            playerTwoSpecial--;
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -310,8 +293,7 @@ $(()=>{
             playerOne.specialPlayerOne(playerTwo);
             $('.animationPlayerOne').text('SPECIAL');
             $('.animationPlayerTwo').text('BLOCKED BY SPECIAL');
-            console.log(playerOne);
-            console.log(playerTwo);
+            playerOneSpecial--;
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -320,8 +302,7 @@ $(()=>{
             playerTwo.specialPlayerTwo(playerOne);
             $('.animationPlayerOne').text('BLOCKED BY SPECIAL');
             $('.animationPlayerTwo').text('SPECIAL');
-            console.log(playerOne);
-            console.log(playerTwo);
+            playerTwoSpecial--;
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -329,8 +310,6 @@ $(()=>{
         } else if (playerOneInput === 'a' && playerTwoInput === 'j') {
             $('.animationPlayerOne').text('COUNTER');
             $('.animationPlayerTwo').text('COUNTER');
-            console.log(playerOne);
-            console.log(playerTwo);
             playerOneInput = '';
             playerTwoInput = '';
             setTimeout(checkRoundWin, 6000);
@@ -372,7 +351,7 @@ $(()=>{
                 playerInputCount++;
                 continueGame();
                 document.removeEventListener('keydown', playerOneEventListener);
-            } else if (keyName === 'd') {
+            } else if (playerOneSpecial > 0 && keyName === 'd') {
                 playerOneInput = 'd';
                 $('#modalOne').css('display', 'none');
                 playerInputCount++;
@@ -401,7 +380,7 @@ $(()=>{
                 playerInputCount++;
                 continueGame();
                 document.removeEventListener('keydown', playerTwoEventListener);
-            } else if (keyName === 'l') {
+            } else if (playerTwoSpecial > 0 && keyName === 'l') {
                 playerTwoInput = 'l';
                 $('#modalTwo').css('display', 'none');
                 playerInputCount++;
@@ -432,6 +411,8 @@ $(()=>{
         playerOneHealthBarValue.value = 100;
         playerTwoHealthBarValue.value = 100;
         turnTimer = 1;
+        playerOneSpecial = 1;
+        playerTwoSpecial = 1;
         //UI alerts
         $('#fightAlertBox').text('New Round Beginning! Prepare To Fight!');
         setTimeout(emptyAlertBox, 6000);
@@ -478,8 +459,6 @@ $(()=>{
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
         }
-        console.log(character);
-        console.log(playerOne);
     });
     $('#playerTwoCharacter>.characterSelect>img').on('click', (event)=>{
         const character = event.target.id;
@@ -514,8 +493,6 @@ $(()=>{
             $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
         }
-        console.log(character);
-        console.log(playerTwo);
     });
 
 
