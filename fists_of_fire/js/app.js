@@ -120,14 +120,14 @@ $(()=>{
     };
     const turnLengthAnnounce = ()=>{
         $('#fightAlertBox').text(`Phase ${turnTimer}... Fight!`);
-        setTimeout(emptyAlertBox, 4000);
+        setTimeout(emptyAlertBox, 3000);
     };
     const playerOneWins = ()=>{
         $('#fightAlertBox').text('Player One has won the game!');
         return false;
     };
     const playerTwoWins = ()=>{
-        $('#fightAlertBox').text('Player One has won the game! Please reload the page if you want to play again.');
+        $('#fightAlertBox').text('Player One has won the game!');
         return false;
     };
     let playerOneRoundsWon = 0;
@@ -169,7 +169,7 @@ $(()=>{
             }
             playerOneWinsMessageOne();
             setTimeout(playerOneWinsMessageTwo, 5000)
-            setTimeout(checkGameWin, 12000);
+            setTimeout(checkGameWin, 10000);
         } else if (playerTwo.health > 0 && playerOne.health <= 0) {
             const playerTwoWinsMessageOne = ()=>{
                 $('#fightAlertBox').text('Player Two Wins This Round!');
@@ -182,7 +182,7 @@ $(()=>{
             }
             playerTwoWinsMessageOne();
             setTimeout(playerTwoWinsMessageTwo, 5000)
-            setTimeout(checkGameWin, 12000);
+            setTimeout(checkGameWin, 10000);
         } else if (playerTwo.health <= 0 && playerOne.health <= 0){
             const playersDraw = ()=>{
                 $('#fightAlertBox').text('Draw! Both players lost. Rematch!');
@@ -194,7 +194,7 @@ $(()=>{
             }
             playersDraw();
             setTimeout(playerTwoWinsMessageTwo, 5000);
-            setTimeout(checkGameWin, 12000);
+            setTimeout(checkGameWin, 10000);
         } else {
             startPhase();
         }
@@ -209,7 +209,7 @@ $(()=>{
             $('.animationPlayerTwo').text('COUNTER');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player One Counters, Player Two attacks
         } else if (playerOneInput === 'a' && playerTwoInput === 'i') {
             playerTwo.health -= (playerOne.attack * 2);
@@ -218,7 +218,7 @@ $(()=>{
             $('.animationPlayerTwo').text('ATTACK');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player One and Player Two attack
         } else if (playerOneInput === 'w' && playerTwoInput === 'i') {
             playerOne.fight(playerTwo);
@@ -229,7 +229,7 @@ $(()=>{
             $('.animationPlayerTwo').text('ATTACK');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player One heals and Player Two attacks
         } else if (playerOneInput === 's' && playerTwoInput === 'i') {
             playerOne.health -= (playerTwo.attack * 2.5);
@@ -238,7 +238,7 @@ $(()=>{
             $('.animationPlayerTwo').text('ATTACK');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player One attacks and player two heals
         } else if (playerOneInput === 'w' && playerTwoInput === 'k'){
             playerTwo.health -= (playerOne.attack * 2.5);
@@ -247,7 +247,7 @@ $(()=>{
             $('.animationPlayerTwo').text('HEAL');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player One heals and player two counters
         } else if (playerOneInput === 's' && playerTwoInput === 'j') {
             playerOne.heal();
@@ -256,7 +256,7 @@ $(()=>{
             $('.animationPlayerTwo').text('COUNTER');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player one counters and player two heals
         } else if (playerOneInput === 'a' && playerTwoInput === 'k') {
             playerTwo.heal();
@@ -265,7 +265,7 @@ $(()=>{
             $('.animationPlayerTwo').text('HEAL');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player one heals and player two heals
         } else if (playerOneInput === 's' && playerTwoInput === 'k') {
             playerOne.heal();
@@ -276,7 +276,7 @@ $(()=>{
             $('.animationPlayerTwo').text('HEAL');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player one and player two both use special
         } else if (playerOneInput === 'd' && playerTwoInput === 'l') {
             playerOne.specialPlayerOne(playerTwo);
@@ -287,7 +287,7 @@ $(()=>{
             playerTwoSpecial--;
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player One uses special and Player Two doesn't
         } else if (playerOneInput === 'd' && playerTwoInput !== 'l') {
             playerOne.specialPlayerOne(playerTwo);
@@ -296,7 +296,7 @@ $(()=>{
             playerOneSpecial--;
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
             //Player Two uses special and Player One doesn't
         } else if (playerOneInput !== 'd' && playerTwoInput === 'l') {
             playerTwo.specialPlayerTwo(playerOne);
@@ -305,14 +305,14 @@ $(()=>{
             playerTwoSpecial--;
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
         // Both players use counter --- nothing happens
         } else if (playerOneInput === 'a' && playerTwoInput === 'j') {
             $('.animationPlayerOne').text('COUNTER');
             $('.animationPlayerTwo').text('COUNTER');
             playerOneInput = '';
             playerTwoInput = '';
-            setTimeout(checkRoundWin, 6000);
+            setTimeout(checkRoundWin, 5000);
         }
     }
 
@@ -326,7 +326,7 @@ $(()=>{
                 const calculateRoundDelay = ()=>{
                     calculateRound(playerOneInput, playerTwoInput);
                 }
-                setTimeout(calculateRoundDelay, 6000);
+                setTimeout(calculateRoundDelay, 4000);
             }
         }
 
@@ -415,10 +415,10 @@ $(()=>{
         playerTwoSpecial = 1;
         //UI alerts
         $('#fightAlertBox').text('New Round Beginning! Prepare To Fight!');
-        setTimeout(emptyAlertBox, 6000);
+        setTimeout(emptyAlertBox, 4000);
 
         //Start the round.
-        setTimeout(startPhase, 6500);
+        setTimeout(startPhase, 4500);
     }
 
     // Just here for testing purposes. Should not be here when game is done.
@@ -438,7 +438,7 @@ $(()=>{
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
-            $('#modalPlayerOne').append('The Barbarian Special Attack deals 20 unblockable damage to the enemy.');
+            $('#modalPlayerOne').append('The Barbarian Special Attack deals 20 unblockable damage.');
         } else if (character === 'priestOne') {
             playerOne = priestOne;
             $('.playerOne').attr('src', 'images/priest.png');
@@ -446,14 +446,14 @@ $(()=>{
             $('.playerOne').css('transform', 'scaleX(-1)');
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
-            $('#modalPlayerOne').append('The Priest Special Attack deals 5 unblockable damage to the enemy and heals for 15.');
+            $('#modalPlayerOne').append('The Priest Special Attack deals 5 unblockable damage and heals for 15.');
         } else if (character === 'knightOne') {
             playerOne = knightOne;
             $('.playerOne').attr('src', 'images/knight.png');
             $('#playerOneCharacter').css('display', 'none');
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
-            $('#modalPlayerOne').append('The Knight Special Attack deals 15 unblockable damage to the enemy and heals for 5.');
+            $('#modalPlayerOne').append('The Knight Special Attack deals 15 unblockable damage and heals for 5.');
         } else if (character === 'rangerOne') {
             playerOne = rangerOne;
             $('.playerOne').attr('src', 'images/ranger.png');
@@ -461,7 +461,7 @@ $(()=>{
             $('.playerOne').css('transform', 'scaleX(-1)');
             $('#playerTwoCharacter').css('display', 'flex');
             $('#playerOneName').text(playerOne.name);
-            $('#modalPlayerOne').append('The Ranger Special Attack deals 10 unblockable damage to the enemy and heals for 10.');
+            $('#modalPlayerOne').append('The Ranger Special Attack deals 10 unblockable damage and heals for 10.');
         }
     });
     $('#playerTwoCharacter>.characterSelect>img').on('click', (event)=>{
@@ -474,7 +474,7 @@ $(()=>{
             $('.start-fight').css('display', 'block');
             $('.playerTwo').css('transform', 'scaleX(-1)');
             $('#playerTwoName').text(playerTwo.name);
-            $('#modalPlayerTwo').append('The Barbarian Special Attack deals 20 unblockable damage to the enemy.');
+            $('#modalPlayerTwo').append('The Barbarian Special Attack deals 20 unblockable damage.');
         } else if (character === 'priestTwo') {
             playerTwo = priestTwo;
             $('.playerTwo').attr('src', 'images/priest.png');
@@ -482,7 +482,7 @@ $(()=>{
             $('#pickCharacters').css('display', 'none');
             $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
-            $('#modalPlayerTwo').append('The Priest Special Attack deals 5 unblockable damage to the enemy and heals for 15.');
+            $('#modalPlayerTwo').append('The Priest Special Attack deals 5 unblockable damage and heals for 15.');
         } else if (character === 'knightTwo') {
             playerTwo = knightTwo;
             $('.playerTwo').attr('src', 'images/knight.png');
@@ -491,7 +491,7 @@ $(()=>{
             $('#pickCharacters').css('display', 'none');
             $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
-            $('#modalPlayerTwo').append('The Knight Special Attack deals 15 unblockable damage to the enemy and heals for 5.');
+            $('#modalPlayerTwo').append('The Knight Special Attack deals 15 unblockable damage and heals for 5.');
         } else if (character === 'rangerTwo') {
             playerTwo = rangerTwo;
             $('.playerTwo').attr('src', 'images/ranger.png');
@@ -499,7 +499,7 @@ $(()=>{
             $('#pickCharacters').css('display', 'none');
             $('.start-fight').css('display', 'block');
             $('#playerTwoName').text(playerTwo.name);
-            $('#modalPlayerTwo').append('The Ranger Special Attack deals 10 unblockable damage to the enemy and heals for 10.');
+            $('#modalPlayerTwo').append('The Ranger Special Attack deals 10 unblockable damage and heals for 10.');
         }
     });
 

@@ -100,7 +100,7 @@ h1 {
     display: none;
 }
 #playerOneCharacter, #playerTwoCharacter {
-    width: 70%;
+    width: 80%;
     background-color: white;
     margin: 150px auto;
     padding: 15px;
@@ -118,7 +118,7 @@ h1 {
 }
 #playerOneCharacter img, #playerTwoCharacter img {
     width: 20%;
-    height: 70%;
+    height: 60%;
     border: 1px solid grey;
     border-radius: 35px;
     padding: 1.9%;
@@ -237,6 +237,13 @@ footer a {
 .modal-header {
     font-size: 1.3em;
     text-decoration: underline;
+}
+.move-descriptions {
+    display: flex;
+    justify-content: space-around;
+}
+.move-descriptions p {
+    margin: 0 20px;
 }
 .animationPlayerTwo {
     height: 30px;
