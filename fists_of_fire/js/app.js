@@ -123,7 +123,7 @@ $(()=>{
         setTimeout(emptyAlertBox, 4000);
     };
     const playerOneWins = ()=>{
-        $('#fightAlertBox').text('Player One has won the game! Please reload the page if you want to play again.');
+        $('#fightAlertBox').text('Player One has won the game!');
         return false;
     };
     const playerTwoWins = ()=>{
