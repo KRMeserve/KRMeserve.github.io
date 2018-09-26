@@ -11,10 +11,11 @@ body {
 h1 {
     font-family: 'Frijole', cursive;
     margin: 0;
-    padding: 2%;
-    background: url('https://www.escapemotions.com/images/meta/fb-flamepainter-free.jpg');
+    padding: 1.5%;
+    background: url('http://reedtruckservices.com/wp-content/uploads/2014/09/silver-textured-sheet-metal-texture1.jpg');
     background-repeat: no-repeat;
-    background-position: top left;
+    background-position: bottom;
+    background-size: cover;
     text-shadow: 2px 2px black;
     font-size: 3em;
 }
@@ -31,7 +32,6 @@ h1 {
     display: none;
     border-radius: 5px;
     border: 2px solid transparent;
-    position: relative;
     animation: startFightAnimation;
     animation-duration: 2s;
     animation-iteration-count: infinite;
@@ -135,7 +135,7 @@ h1 {
 .playerHealthContainer progress {
     -webkit-appearance: none;
     appearance: none;
-    height: 20px;
+    height: 25px;
     width: 400px;
     border-radius: 3px;
 }
@@ -219,6 +219,20 @@ progress::-webkit-progress-bar {
     animation-name: playerOneAttackText;
     animation-duration: 6s;
     animation-iteration-count: infinite;
+}
+footer {
+    background-color: #3e4722;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+footer > h3 {
+    padding: 0px 15px;
+    margin: 5px 0;
+}
+footer a {
+    text-decoration: none;
+    color: black;
 }
 .animationPlayerTwo {
     height: 30px;

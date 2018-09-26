@@ -56,28 +56,32 @@
                 <p>[d] Click 'd' to use the <span class="red">special attack</span> unique to your class. This attack will stun the enemy and skip their attack, unless both special abilities are used at the same time. You can only use this once per round.</p>
             </div>
         </div>
-            <div class="playField">
-                <div class="playerNames">
-                    <div id="playerOneName"></div>
-                    <div id="playerTwoName"></div>
+        <div class="playField">
+            <div class="playerNames">
+                <div id="playerOneName"></div>
+                <div id="playerTwoName"></div>
+            </div>
+            <div class="playerHealthContainer">
+                <div class="playerOneHealth">
+                    <progress value="100" max="100" id="playerOneHealthBar">Player One Health Bar</progress>
                 </div>
-                <div class="playerHealthContainer">
-                    <div class="playerOneHealth">
-                        <progress value="100" max="100" id="playerOneHealthBar">Player One Health Bar</progress>
-                    </div>
-                    <div class="playerTwoHealth">
-                        <progress value="100" max="100" id="playerTwoHealthBar">Player Two Health Bar </progress>
-                    </div>
-                </div>
-                <div id="fightAlertBox"></div>
-                <div class="playerCharacterContainer">
-                    <img class="playerOne"/>
-                    <img class="playerTwo"/>
-                </div>
-                <div class="animations">
-                    <div class="animationPlayerOne"></div>
-                    <div class="animationPlayerTwo"></div>
+                <div class="playerTwoHealth">
+                    <progress value="100" max="100" id="playerTwoHealthBar">Player Two Health Bar </progress>
                 </div>
             </div>
+            <div id="fightAlertBox"></div>
+            <div class="playerCharacterContainer">
+                <img class="playerOne"/>
+                <img class="playerTwo"/>
+            </div>
+            <div class="animations">
+                <div class="animationPlayerOne"></div>
+                <div class="animationPlayerTwo"></div>
+            </div>
+        </div>
+        <footer>
+            <h3>Made by <a href="http://www.kylemeserve.com/">Kyle M.</a></h3>
+            <h3>September, 2018</h3>
+        </footer>
     </body>
 </html>
