@@ -130,10 +130,19 @@ $(()=>{
         $('#fightAlertBox').text('Player One has won the game!');
         return false;
     };
-    // const makeStartOverButton = ()=>{
-    //     const button = $('<button>').appendTo('.animations').addClass('start-over');
-    //     $('.start-over').on('click', )
-    // }
+    const makeStartOverButton = ()=>{
+        $('.start-fight').css('display', 'block').empty().text('Restart Game');
+        $('.start-fight').off('click').on('click', restartGame);
+    }
+    const restartGame = ()=>{
+        playerOneRoundsWon = 0;
+        playerTwoRoundsWon = 0;
+        startOver();
+        $('.start-fight').off('click').empty().text('Start Fight').on('click', ()=>{
+            startFight();
+            $('.start-fight').css('display', 'none');
+        });
+    }
     let playerOneRoundsWon = 0;
     let playerTwoRoundsWon = 0;
     let playerOneInput = '';
@@ -149,10 +158,10 @@ $(()=>{
     const checkGameWin = ()=>{
         if (playerOneRoundsWon === 2) {
             playerOneWins();
-            // makeStartOverButton();
+            makeStartOverButton();
         } else if (playerTwoRoundsWon === 2) {
             playerTwoWins();
-            // makeStartOverButton();
+            makeStartOverButton();
         } else {
             startFight();
         }
@@ -435,7 +444,7 @@ $(()=>{
 
     //Character Selection Brains (Tested and it WORKS! :D)
     const startOver = ()=>{
-
+        $('#playerOneCharacter').css('display', 'flex');
         $('#pickCharacters').css('display', 'block');
         $('#playerTwoCharacter').css('display', 'none');
         $('#playerOneCharacter>.characterSelect>img').on('click', (event)=>{
