@@ -69,3 +69,110 @@ I would have liked to make custom animations for each attack, but spent the bett
 When the Start Game button goes away, the fight arena shrinks. This problem doesn't cause any issues, but is annoying to me. Unfortunately, I ran out of time to fix this problem as the other bugs I ran into were either game breaking or ruined the game experience and were higher priority.
 
 At the start of each game, if both players use their special attacks, sometimes the health totals act unexpectedly. Since some of them have healing involved, if their special attack is registered first, they heal first and then take the damage from their opponent. You can't heal over 100 though. So, sometimes where you think you'd take 20 damage and heal 15, instead you just take 20 damage. I'm not sure how to fix this problem though.
+
+## Programming Thought Process
+
+**Fighter Class and extensions**
+
+I used a class to hold the basic information for the characters and then created the characters later in the program.
+
+```
+class Fighter {
+    constructor(name){
+        this.name = name;
+        this.health = 100;
+        this.attack = 10;
+    }
+    //Attack function
+    fight(enemy){
+        enemy.health -= this.attack;
+    }
+    //Counter function
+    counter(){
+    }
+    //Heal Function
+    heal(){
+
+        if (this.health < 100) {
+            this.health += 15;
+        } else {
+            return `${this.name} tried to heal, but was already at full health.`
+        }
+    }
+};
+```
+
+```
+class Priest extends Fighter {
+    //Special Attack
+    specialPlayerOne(enemy){
+        enemy.health -= 5;
+        this.health += 15;
+        playerTwoHealthBarValue.value -= 5;
+        playerOneHealthBarValue.value += 15;
+    }
+    specialPlayerTwo(enemy){
+        enemy.health -= 5;
+        this.health += 15;
+        playerTwoHealthBarValue.value += 15;
+        playerOneHealthBarValue.value -= 5;
+    }
+}
+```
+
+The counter function ended up never getting used and instead was hard coded into the program. If I had more time I would have figured out a way to make this easier to pull later.
+
+The extension classes only housed the special attacks. They have one version of the special attack for both player one and player two that takes 'enemy' as an argument. When it is called later in the code, I then didn't need to hard code anything in which was very useful. I even built the change of healthbar (which is a styled html progress bar) into the attack.
+
+
+**Calling the Characters**
+
+I called one version of the classes for each player so the characters would keep their names and both players could be the same character without any problems.
+
+```
+const brawlerOne = new Brawler('GARR');
+const priestOne = new Priest('Lillian');
+const knightOne = new Knight('Sir Grant');
+const rangerOne = new Ranger('Outlaw');
+const brawlerTwo = new Brawler('GARR');
+const priestTwo = new Priest('Lillian');
+const knightTwo = new Knight('Sir Grant');
+const rangerTwo = new Ranger('Outlaw');
+
+let playerOne = brawlerOne;
+let playerTwo = knightTwo;
+```
+
+This let me create backup functions that were set equal to the new Brawler easily later once the players selected who they wanted to be.
+
+
+**Start of Game**
+
+I created two modals that both display the character images that you can click in order to select your class at the start of the game. On click of an image, I ran an if/else statement that checked for which character was selected and assigned that class to the correct player.
+
+```
+const modalPlayerOne = $('#modalPlayerOne').children();
+
+$('#playerOneCharacter>.characterSelect>img').on('click', (event)=>{
+    const character = event.target.id;
+    if (character === 'barbarianOne') {
+        playerOne = brawlerOne;
+        $('.playerOne').attr('src', 'images/barbarian.png');
+        $('#playerOneCharacter').css('display', 'none');
+        $('#playerTwoCharacter').css('display', 'flex');
+        $('#playerOneName').text(playerOne.name);
+        $('#modalPlayerOne').children().remove();
+        $('#modalPlayerOne').append(modalPlayerOne);
+        const paragraph = ('<p>');
+        $(paragraph).appendTo('#modalPlayerOne');
+        $('#modalPlayerOne').children().eq(5).append('The Barbarian Special Attack deals 20 unblockable damage.');
+        $('#playerOneCharacter>.characterSelect>img').off('click');
+    }
+```
+
+Above is the click event for assigning a single character to player one. A lot of the code in the above block is unnecessary until you want to restart the game. I ran into an issue with the text that would inform you what your character's special attack is, where on the second play-through you would still have your first character's special attack text was still shown.
+
+
+**Start Fight**
+
+Since each game is a best of three, I needed to make a function that reset the counters and reset the health bars every round. I also had a fight alert box that 
