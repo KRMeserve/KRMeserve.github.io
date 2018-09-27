@@ -50,4 +50,24 @@ The Knight is a master of melee and damage dealing. The knight does 15 unblockab
 The Ranger likes to stay at a distance and deals 10 unblockable damage and runs to a safer distance, healing for 10.
 
 
-##
+## Technologies Used/Approach Taken
+
+Fists of Fire was made using HTML, CSS, JavaScript, and jQuery after only 3 weeks of class. The focus of the game was to make something that could be playable using the DOM, so JavaScript and jQuery were my focus until I had a baseline game functional. Then, my goal shifted to allow a player to enjoy the game without any prior knowledge or experience with this game before.
+
+CSS became more and more important as I continued working to get the game to be visual and interactive, while still easy to pick up. Before the project began I drew a very basic wireframe of how I wanted everything to look throughout the various stages of each round, which really helped when I got down to actually working on the code.
+
+All logic was made with JavaScript and jQuery, animations with CSS, and the elements were all made with HTML and jQuery.
+
+Once I got the game in working condition (both visually and technically), I sent the game out to family and friends to viciously play-test and critique. This was probably the most helpful thing I could have done. Within an hour or so I had a list of bugs and UI/UX comments about what confused them or what didn't seem to be working correctly. I can't say enough how important (and somewhat discouraging) having someone else look at your work is. There is always more that could be done and when a brand new player starts playing with the game, they'll come back with "I wish it did this when I clicked a button" or "Why doesn't this happen when I..." etc. You can't fix everything that everyone mentions, but getting an outside reaction is priceless.
+
+## Unsolved Problems
+
+The game will run fairly flawlessly throughout the multiple times I have played it with my wife and had family and friends play-test it. Most of the problems are on the UI side.
+
+I would have liked to make custom animations for each attack, but spent the better part of six hours working on a single animation and it turned out terrible. So I had to resort to floating text when a move was used instead, which gets the same point across but is nowhere near as cool.
+
+I'm hoping to get a 'Restart the Game' button working by the time this project is due, but it has been causing problems and breaking the game every time I try and implement it.
+
+When the Start Game button goes away, the fight arena shrinks. This problem doesn't cause any issues, but is annoying to me. Unfortunately, I ran out of time to fix this problem as the other bugs I ran into were either game breaking or ruined the game experience and were higher priority.
+
+At the start of each game, if both players use their special attacks, sometimes the health totals act unexpectedly. Since some of them have healing involved, if their special attack is registered first, they heal first and then take the damage from their opponent. You can't heal over 100 though. So, sometimes where you think you'd take 20 damage and heal 15, instead you just take 20 damage. I'm not sure how to fix this problem though. 
