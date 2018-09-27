@@ -1,6 +1,6 @@
 # Fists of Fire
 ---
-(https://krmeserve.github.io/fists_of_fire/ "Play Fists of Fire")
+[Play Fists of Fire](https://krmeserve.github.io/fists_of_fire/ "Play Fists of Fire")
 ---
 ## Instructions
 
