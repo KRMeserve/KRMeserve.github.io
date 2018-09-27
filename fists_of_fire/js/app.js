@@ -442,6 +442,8 @@ $(()=>{
         $('.start-fight').css('display', 'none');
     });
 
+    const modalPlayerOne = $('#modalPlayerOne').children();
+    const modalPlayerTwo = $('#modalPlayerTwo').children();
     //Character Selection Brains (Tested and it WORKS! :D)
     const startOver = ()=>{
         $('#playerOneCharacter').css('display', 'flex');
@@ -455,7 +457,12 @@ $(()=>{
                 $('#playerOneCharacter').css('display', 'none');
                 $('#playerTwoCharacter').css('display', 'flex');
                 $('#playerOneName').text(playerOne.name);
-                $('#modalPlayerOne').append('The Barbarian Special Attack deals 20 unblockable damage.');
+                $('#modalPlayerOne').children().remove();
+                $('#modalPlayerOne').append(modalPlayerOne);
+                const paragraph = ('<p>');
+                $(paragraph).appendTo('#modalPlayerOne');
+                $('#modalPlayerOne').children().eq(5).append('The Barbarian Special Attack deals 20 unblockable damage.');
+                $('#playerOneCharacter>.characterSelect>img').off('click');
             } else if (character === 'priestOne') {
                 playerOne = priestOne;
                 $('.playerOne').attr('src', 'images/priest.png');
@@ -463,14 +470,24 @@ $(()=>{
                 $('.playerOne').css('transform', 'scaleX(-1)');
                 $('#playerTwoCharacter').css('display', 'flex');
                 $('#playerOneName').text(playerOne.name);
-                $('#modalPlayerOne').append('The Priest Special Attack deals 5 unblockable damage and heals for 15.');
+                $('#modalPlayerOne').children().remove();
+                $('#modalPlayerOne').append(modalPlayerOne);
+                const paragraph = ('<p>');
+                $(paragraph).appendTo('#modalPlayerOne');
+                $('#modalPlayerOne').children().eq(5).append('The Priest Special Attack deals 5 unblockable damage and heals for 15.');
+                $('#playerOneCharacter>.characterSelect>img').off('click');
             } else if (character === 'knightOne') {
                 playerOne = knightOne;
                 $('.playerOne').attr('src', 'images/knight.png');
                 $('#playerOneCharacter').css('display', 'none');
                 $('#playerTwoCharacter').css('display', 'flex');
                 $('#playerOneName').text(playerOne.name);
-                $('#modalPlayerOne').append('The Knight Special Attack deals 15 unblockable damage and heals for 5.');
+                $('#modalPlayerOne').children().remove();
+                $('#modalPlayerOne').append(modalPlayerOne);
+                const paragraph = ('<p>');
+                $(paragraph).appendTo('#modalPlayerOne');
+                $('#modalPlayerOne').children().eq(5).append('The Knight Special Attack deals 15 unblockable damage and heals for 5.');
+                $('#playerOneCharacter>.characterSelect>img').off('click');
             } else if (character === 'rangerOne') {
                 playerOne = rangerOne;
                 $('.playerOne').attr('src', 'images/ranger.png');
@@ -478,10 +495,16 @@ $(()=>{
                 $('.playerOne').css('transform', 'scaleX(-1)');
                 $('#playerTwoCharacter').css('display', 'flex');
                 $('#playerOneName').text(playerOne.name);
-                $('#modalPlayerOne').append('The Ranger Special Attack deals 10 unblockable damage and heals for 10.');
+                $('#modalPlayerOne').children().remove();
+                $('#modalPlayerOne').append(modalPlayerOne);
+                const paragraph = ('<p>');
+                $(paragraph).appendTo('#modalPlayerOne');
+                $('#modalPlayerOne').children().eq(5).append('The Ranger Special Attack deals 10 unblockable damage and heals for 10.');
+                $('#playerOneCharacter>.characterSelect>img').off('click');
             }
         });
         $('#playerTwoCharacter>.characterSelect>img').on('click', (event)=>{
+            console.log('Click Event Triggered Once');
             const character = event.target.id;
             if (character === 'barbarianTwo') {
                 playerTwo = brawlerTwo;
@@ -491,7 +514,12 @@ $(()=>{
                 $('.start-fight').css('display', 'block');
                 $('.playerTwo').css('transform', 'scaleX(-1)');
                 $('#playerTwoName').text(playerTwo.name);
-                $('#modalPlayerTwo').append('The Barbarian Special Attack deals 20 unblockable damage.');
+                $('#modalPlayerTwo').children().remove();
+                $('#modalPlayerTwo').append(modalPlayerTwo);
+                const paragraph = ('<p>');
+                $(paragraph).appendTo('#modalPlayerTwo');
+                $('#modalPlayerTwo').children().eq(5).append('The Barbarian Special Attack deals 20 unblockable damage.');
+                $('#playerTwoCharacter>.characterSelect>img').off('click');
             } else if (character === 'priestTwo') {
                 playerTwo = priestTwo;
                 $('.playerTwo').attr('src', 'images/priest.png');
@@ -499,7 +527,12 @@ $(()=>{
                 $('#pickCharacters').css('display', 'none');
                 $('.start-fight').css('display', 'block');
                 $('#playerTwoName').text(playerTwo.name);
-                $('#modalPlayerTwo').append('The Priest Special Attack deals 5 unblockable damage and heals for 15.');
+                $('#modalPlayerTwo').children().remove();
+                $('#modalPlayerTwo').append(modalPlayerTwo);
+                const paragraph = ('<p>');
+                $(paragraph).appendTo('#modalPlayerTwo');
+                $('#modalPlayerTwo').children().eq(5).append('The Priest Special Attack deals 5 unblockable damage and heals for 15.');
+                $('#playerTwoCharacter>.characterSelect>img').off('click');
             } else if (character === 'knightTwo') {
                 playerTwo = knightTwo;
                 $('.playerTwo').attr('src', 'images/knight.png');
@@ -508,7 +541,12 @@ $(()=>{
                 $('#pickCharacters').css('display', 'none');
                 $('.start-fight').css('display', 'block');
                 $('#playerTwoName').text(playerTwo.name);
-                $('#modalPlayerTwo').append('The Knight Special Attack deals 15 unblockable damage and heals for 5.');
+                $('#modalPlayerTwo').children().remove();
+                $('#modalPlayerTwo').append(modalPlayerTwo);
+                const paragraph = ('<p>');
+                $(paragraph).appendTo('#modalPlayerTwo');
+                $('#modalPlayerTwo').children().eq(5).append('The Knight Special Attack deals 15 unblockable damage and heals for 5.');
+                $('#playerTwoCharacter>.characterSelect>img').off('click');
             } else if (character === 'rangerTwo') {
                 playerTwo = rangerTwo;
                 $('.playerTwo').attr('src', 'images/ranger.png');
@@ -516,7 +554,12 @@ $(()=>{
                 $('#pickCharacters').css('display', 'none');
                 $('.start-fight').css('display', 'block');
                 $('#playerTwoName').text(playerTwo.name);
-                $('#modalPlayerTwo').append('The Ranger Special Attack deals 10 unblockable damage and heals for 10.');
+                $('#modalPlayerTwo').children().remove();
+                $('#modalPlayerTwo').append(modalPlayerTwo);
+                const paragraph = ('<p>');
+                $(paragraph).appendTo('#modalPlayerTwo');
+                $('#modalPlayerTwo').children().eq(5).append('The Ranger Special Attack deals 10 unblockable damage and heals for 10.');
+                $('#playerTwoCharacter>.characterSelect>img').off('click');
             }
         })
     };

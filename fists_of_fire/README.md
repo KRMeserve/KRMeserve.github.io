@@ -66,8 +66,6 @@ The game will run fairly flawlessly throughout the multiple times I have played 
 
 I would have liked to make custom animations for each attack, but spent the better part of six hours working on a single animation and it turned out terrible. So I had to resort to floating text when a move was used instead, which gets the same point across but is nowhere near as cool.
 
-I'm hoping to get a 'Restart the Game' button working by the time this project is due, but it has been causing problems and breaking the game every time I try and implement it.
-
 When the Start Game button goes away, the fight arena shrinks. This problem doesn't cause any issues, but is annoying to me. Unfortunately, I ran out of time to fix this problem as the other bugs I ran into were either game breaking or ruined the game experience and were higher priority.
 
-At the start of each game, if both players use their special attacks, sometimes the health totals act unexpectedly. Since some of them have healing involved, if their special attack is registered first, they heal first and then take the damage from their opponent. You can't heal over 100 though. So, sometimes where you think you'd take 20 damage and heal 15, instead you just take 20 damage. I'm not sure how to fix this problem though. 
+At the start of each game, if both players use their special attacks, sometimes the health totals act unexpectedly. Since some of them have healing involved, if their special attack is registered first, they heal first and then take the damage from their opponent. You can't heal over 100 though. So, sometimes where you think you'd take 20 damage and heal 15, instead you just take 20 damage. I'm not sure how to fix this problem though.
