@@ -1,5 +1,7 @@
 # Fists of Fire
 ---
+(https://krmeserve.github.io/fists_of_fire/ "Play Fists of Fire")
+---
 ## Instructions
 
 Fists of Fire is based off of two player arcade-style fighting games. Both players will pick a unique character at the start of the game and fight until one (or both) players have reached 0 health. Where this game differs is that it handles combat through a turn-based system instead of timing based inputs.
@@ -29,6 +31,23 @@ You will heal for 15 health on a successful cast. If this is interrupted by an a
 
 ### Unique Attacks
 
-All four characters will have a unique attack.
+All four characters have unique special attacks. Each special attack will stun the opponent on the turn it is played (unless both players use their specials at the same time).
 
-To be continued...
+**Barbarian**
+
+The Barbarian is a high-damage class that deals 20 unblockable damage to the enemy.
+
+**Priest**
+
+The Priest is - above all - skilled at in holy magic that is focused on healing. Because of this, their special attack deals 5 unblockable damage but heals for 15.
+
+**Knight**
+
+The Knight is a master of melee and damage dealing. The knight does 15 unblockable damage and then raises his shield, increasing health by 5.
+
+**Ranger**
+
+The Ranger likes to stay at a distance and deals 10 unblockable damage and runs to a safer distance, healing for 10.
+
+
+##
