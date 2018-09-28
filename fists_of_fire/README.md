@@ -68,7 +68,9 @@ I would have liked to make custom animations for each attack, but spent the bett
 
 When the Start Game button goes away, the fight arena shrinks. This problem doesn't cause any issues, but is annoying to me. Unfortunately, I ran out of time to fix this problem as the other bugs I ran into were either game breaking or ruined the game experience and were higher priority.
 
-At the start of each game, if both players use their special attacks, sometimes the health totals act unexpectedly. Since some of them have healing involved, if their special attack is registered first, they heal first and then take the damage from their opponent. You can't heal over 100 though. So, sometimes where you think you'd take 20 damage and heal 15, instead you just take 20 damage. I'm not sure how to fix this problem though.
+At the start of each game, if both players use their special attacks, sometimes the health totals act unexpectedly. Since some of them have healing involved, if their special attack is registered first, they heal first and then take the damage from their opponent. You can't heal over 100 though. So, sometimes where you think you'd take 20 damage and heal 15, instead you just take 20 damage.
+
+If you selected a class that needed their image to be swapped to face the other direction and then restart the game and choose another class that needed to have the direction it is facing swapped, on your second playthrough you will be facing the wrong way. This could have been fixed if I had more time, but I found it the night before the project was due.
 
 ## Programming Thought Process
 
@@ -175,4 +177,122 @@ Above is the click event for assigning a single character to player one. A lot o
 
 **Start Fight**
 
-Since each game is a best of three, I needed to make a function that reset the counters and reset the health bars every round. I also had a fight alert box that 
+Since each game is a best of three, I needed to make a function that reset the counters and reset the health bars every round. I also had a fight alert box that would post alerts to the players and let them know the score throughout the game.
+
+```
+const startFight = ()=>{
+    //Reset round stats for new fight.
+    playerOne.health = 100;
+    playerTwo.health = 100;
+    playerOneHealthBarValue.value = 100;
+    playerTwoHealthBarValue.value = 100;
+    turnTimer = 1;
+    playerOneSpecial = 1;
+    playerTwoSpecial = 1;
+    //UI alerts
+    $('#fightAlertBox').text('New Round Beginning! Prepare To Fight!');
+    setTimeout(emptyAlertBox, 4000);
+
+    //Start the round.
+    setTimeout(startPhase, 4500);
+}
+```
+
+
+**Event Listeners and Player Inputs**
+
+The largest challenge I had was with the player keyboard inputs. I needed to make the game playable on the keyboard so the move selection would be a secret from the other player. I only wanted inputs to be accepted while the modal with the player's moves was shown, so as soon as an input was accepted, it would remove the event listener.
+
+```
+const playerOneTurnInput = ()=>{
+    $('#modalOne').css('display', 'block');
+    document.addEventListener('keydown', playerOneEventListener);
+}
+
+const playerOneEventListener = (event)=>{
+    let keyName = event.key;
+    if (keyName === 'w') {
+        playerOneInput = 'w';
+        $('#modalOne').css('display', 'none');
+        playerInputCount++;
+        continueGame();
+        document.removeEventListener('keydown', playerOneEventListener);
+    }
+```
+I hard-coded in each input I would accept and then updated the player input variable. This also would hide the modal and continue the game.
+
+I ran into an issue where the game would actually run the continueGame function twice since each player's input would tell the game to run the function. Because of that, I built a if statement that would only continue the game after both players had entered an input. Then, I would reset the player input variable so next round it would still work.
+
+```
+    const continueGame = ()=>{
+        if (playerInputCount === 2){
+            playerInputCount = 0;
+            turnLengthAnnounce();
+            turnTimer++;
+            const calculateRoundDelay = ()=>{
+                calculateRound(playerOneInput, playerTwoInput);
+            }
+            setTimeout(calculateRoundDelay, 4000);
+        }
+    }
+```
+The setTimeout function is there only so the players have a moment before the round starts.
+
+
+**Calculate Rounds Based on User Input**
+
+Each round requires a unique interaction, based on the player's inputs. This was hard coded with an if statement in order to get the health bars and animated text to show correctly.
+
+```
+const calculateRound = (playerOneInput, playerTwoInput)=>{
+    //Player One attacks, player two counters
+    if (playerOneInput === 'w' && playerTwoInput === 'j') {
+        playerOne.health -= (playerTwo.attack * 2);
+        playerOneHealthBarValue.value -= (playerTwo.attack * 2);
+        $('.animationPlayerOne').text('ATTACK');
+        $('.animationPlayerTwo').text('COUNTER');
+        playerOneInput = '';
+        playerTwoInput = '';
+        setTimeout(checkRoundWin, 5000);
+    }
+```
+
+
+**Checking if the game is over**
+
+Every round, the game would then check to see if either character (or both) was out of health. Then, it would display the correct text and give a win to the correct player. It would then check if a player had won 2 games and if so, award the victory to that player.
+
+```
+const checkGameWin = ()=>{
+    if (playerOneRoundsWon === 2) {
+        playerOneWins();
+        makeStartOverButton();
+    } else if (playerTwoRoundsWon === 2) {
+        playerTwoWins();
+        makeStartOverButton();
+    } else {
+        startFight();
+    }
+}
+
+const checkRoundWin = ()=>{
+    $('.animationPlayerOne').empty();
+    $('.animationPlayerTwo').empty();
+    //Checking who has 0 health and awarding a win to the victor (or a draw)
+    if (playerOne.health > 0 && playerTwo.health <= 0) {
+        const playerOneWinsMessageOne = ()=>{
+            $('#fightAlertBox').text('Player One Wins This Round!');
+            playerOneRoundsWon++;
+            setTimeout(emptyAlertBox, 4000);
+        }
+        const playerOneWinsMessageTwo = ()=>{
+            $('#fightAlertBox').text(`Player One has won ${playerOneRoundsWon} rounds and Player Two has won ${playerTwoRoundsWon}.`);
+            setTimeout(emptyAlertBox, 4000);
+        }
+        playerOneWinsMessageOne();
+        setTimeout(playerOneWinsMessageTwo, 5000)
+        setTimeout(checkGameWin, 10000);
+    }
+```
+
+***
