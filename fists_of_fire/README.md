@@ -75,7 +75,7 @@ If you selected a class that needed their image to be swapped to face the other 
 ## Programming Thought Process
 
 **Fighter Class and extensions**
-
+---
 I used a class to hold the basic information for the characters and then created the characters later in the program.
 
 ```
@@ -124,11 +124,11 @@ class Priest extends Fighter {
 
 The counter function ended up never getting used and instead was hard coded into the program. If I had more time I would have figured out a way to make this easier to pull later.
 
-The extension classes only housed the special attacks. They have one version of the special attack for both player one and player two that takes 'enemy' as an argument. When it is called later in the code, I then didn't need to hard code anything in which was very useful. I even built the change of healthbar (which is a styled html progress bar) into the attack.
+The extension classes only housed the special attacks. They have one version of the special attack for both player one and player two that takes 'enemy' as an argument. When it is called later in the code, I then didn't need to hard code anything in which was very useful. I even built the change of health-bar (which is a styled html progress bar) into the attack.
 
 
 **Calling the Characters**
-
+---
 I called one version of the classes for each player so the characters would keep their names and both players could be the same character without any problems.
 
 ```
@@ -149,7 +149,7 @@ This let me create backup functions that were set equal to the new Brawler easil
 
 
 **Start of Game**
-
+---
 I created two modals that both display the character images that you can click in order to select your class at the start of the game. On click of an image, I ran an if/else statement that checked for which character was selected and assigned that class to the correct player.
 
 ```
@@ -176,7 +176,7 @@ Above is the click event for assigning a single character to player one. A lot o
 
 
 **Start Fight**
-
+---
 Since each game is a best of three, I needed to make a function that reset the counters and reset the health bars every round. I also had a fight alert box that would post alerts to the players and let them know the score throughout the game.
 
 ```
@@ -200,7 +200,7 @@ const startFight = ()=>{
 
 
 **Event Listeners and Player Inputs**
-
+---
 The largest challenge I had was with the player keyboard inputs. I needed to make the game playable on the keyboard so the move selection would be a secret from the other player. I only wanted inputs to be accepted while the modal with the player's moves was shown, so as soon as an input was accepted, it would remove the event listener.
 
 ```
@@ -240,7 +240,7 @@ The setTimeout function is there only so the players have a moment before the ro
 
 
 **Calculate Rounds Based on User Input**
-
+---
 Each round requires a unique interaction, based on the player's inputs. This was hard coded with an if statement in order to get the health bars and animated text to show correctly.
 
 ```
@@ -259,7 +259,7 @@ const calculateRound = (playerOneInput, playerTwoInput)=>{
 
 
 **Checking if the game is over**
-
+---
 Every round, the game would then check to see if either character (or both) was out of health. Then, it would display the correct text and give a win to the correct player. It would then check if a player had won 2 games and if so, award the victory to that player.
 
 ```

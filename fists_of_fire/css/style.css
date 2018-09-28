@@ -12,7 +12,7 @@ h1 {
     font-family: 'Frijole', cursive;
     margin: 0;
     padding: 1.5%;
-    background: url('http://reedtruckservices.com/wp-content/uploads/2014/09/silver-textured-sheet-metal-texture1.jpg');
+    background: url('https://www.pyroceltica.org/wp-content/gallery/background-3/firebgrd3m.jpg');
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
@@ -101,14 +101,16 @@ h1 {
 }
 #playerOneCharacter, #playerTwoCharacter {
     width: 80%;
-    background-color: white;
+    background: url('https://www.pyroceltica.org/wp-content/gallery/background-3/firebgrd3m.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 150px auto;
     padding: 15px;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    color: black;
+    color: orange;
 }
 #playerOneCharacter .heading, #playerTwoCharacter .heading {
     width: 100%;
