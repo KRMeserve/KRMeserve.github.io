@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+    background-color: rgba(49, 40, 35, 1);
+}
+img {
+    width: 25px;
+    height: 25px;
+}
+.social-media {
+    padding-left: 15px;
+}
+.credits {
+    padding-top: 5px;
+}
+body {
+    background-image: url("../img/PortfolioBackground.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    /* height: */
+}
+.main {
+    padding-right: 35%;
+    text-align: right;
+    color: white;
+    margin-bottom: 400px;
+}
+a {
+    color: white;
+}
+a:hover {
+    color: rgb(200,164,159);
+    cursor: pointer;
+}
+.first-h3 {
+    padding-top: 150px;
+    margin: 0;
+    /* margin-right: 244px; */
+}
+h1 {
+    font-size: 3em;
+}
+.links>a {
+    display: block;
+    /* width: 200px; */
+    margin-top: 20px;
+    font-size: 1.3em;
+    transition: .3s;
+}
+.footer {
+    /* position: absolute; */
+    display: flex;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #3F3F3F;
+    color: white;
+    justify-content: space-between;
+}
+.projectsContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+}
+.projectsContainer img {
+    height: 275px;
+    width: 450px;
+    padding: 15px;
+}
+.projectsContainer img:hover {
+    cursor: pointer;
+}
+.my-work {
+    padding-top: 100px;
+    margin-top: 0;
+    text-align: center;
+    color: white;
+    font-size: 2em;
+}
+.nav-bar {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.nav-bar a {
+    transition: .3s;
+}
