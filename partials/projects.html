@@ -20,10 +20,10 @@
         </div>
     </div>
     <div class="nav-bar">
-        <a href="#">Home</a>
-        <a href="#">My Work</a>
-        <a href="#">About</a>
-        <a href="#">Request my Resume</a>
+        <a ng-click="ctrl.changePage('home')">Home</a>
+        <a ng-click="ctrl.changePage('projects')">My Work</a>
+        <a ng-click="ctrl.changePage('aboutme')">About</a>
+        <a ng-click="ctrl.changePage('resume')">Request my Resume</a>
     </div>
 </div>
 <div ng-include="ctrl.footerPartial"></div>
