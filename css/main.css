@@ -35,7 +35,7 @@ body {
 a {
     color: white;
     transition: .3s;
-    text-decoration: none;
+    /* text-decoration: none; */
 }
 a:hover {
     color: rgb(200,164,159);
@@ -51,6 +51,7 @@ h1 {
 }
 .links>a {
     display: block;
+    text-decoration: underline;
     /* width: 200px;
     margin-left: 76%; */
     margin-top: 20px;
@@ -98,6 +99,7 @@ h1 {
 }
 .nav-bar a {
     transition: .3s;
+    text-decoration: underline;
 }
 .aboutMeContainer {
     display: flex;
