@@ -22,6 +22,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    height: 100vh;
     margin: 0;
     font-family: 'Roboto', sans-serif;
     /* height: */
@@ -30,7 +31,7 @@ body {
     padding-right: 35%;
     text-align: right;
     color: white;
-    margin-bottom: 400px;
+    /* margin-bottom: 400px; */
 }
 a {
     color: white;
@@ -61,8 +62,11 @@ h1 {
 .footer {
     /* position: absolute; */
     display: flex;
-    margin-top: 100px;
     padding: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: #3F3F3F;
     color: white;
     justify-content: space-between;
@@ -125,7 +129,6 @@ h1 {
     height: 100px;
     width: 100%;
 }
-
 .topRow p, .bottomRow p {
     width: 420px;
     background-color: rgba(255, 255, 255, 0.7);
@@ -133,4 +136,10 @@ h1 {
     margin: 0 auto;
     height: 75px;
     border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        color: red;
+    }
 }
