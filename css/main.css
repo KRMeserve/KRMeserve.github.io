@@ -166,7 +166,7 @@ h1 {
     }
     .footer {
         flex-shrink: 0;
-        position: relative;
+        /* position: relative; */
     }
     .main {
         padding-right: 20%;
