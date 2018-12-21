@@ -15,7 +15,15 @@
         <h1 class="greeting">Greeting Will Go Here</h1>
         <p class="quoteOfTheDay">Quote Will Go Here</p>
         <div class="widget-container">
-            <div class="weather-widget">Weather Widget Will go Here</div>
+            <div class="weather-widget">
+                <a
+                    class="weatherwidget-io"
+                    href="https://forecast7.com/en/33d95n83d36/athens/?unit=us"
+                    data-label_1="ATHENS"
+                    data-label_2="WEATHER NEAR CATHRINE" data-theme="original">
+                    ATHENS WEATHER NEAR CATHRINE
+                </a>
+            </div>
             <div class="random-picture">Random Picture Will Go Here</div>
         </div>
         <div class="facebook-feed">
@@ -25,4 +33,7 @@
 
         </div>
     </body>
+    <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+    </script>
 </html>
