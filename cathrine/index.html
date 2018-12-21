@@ -12,9 +12,22 @@
         <script type="text/javascript" src="app.js"></script>
     </head>
     <body>
-        <h1 class="greeting">Greeting Will Go Here</h1>
-        <p class="quoteOfTheDay">Quote Will Go Here</p>
+        <div class="header">
+            <h1 class="greeting"></h1>
+            <p class="quoteOfTheDay"><span class='quote'></span> - <span class="author"></span></p>
+        </div>
+        <div class="social-media">
+            <div class="facebook-feed">
+                <a href="https://www.facebook.com"> <img src="img/facebook.png"> </a>
+            </div>
+            <div class="pinterest-feed">
+                <a href="https://www.pinterest.com"> <img src="img/pinterest.png"> </a>
+            </div>
+        </div>
         <div class="widget-container">
+            <div class="picture-container">
+                <img class='random-picture'></img>
+            </div>
             <div class="weather-widget">
                 <a
                     class="weatherwidget-io"
@@ -24,18 +37,7 @@
                     ATHENS WEATHER NEAR CATHRINE
                 </a>
             </div>
-            <div class="picture-container">
-                <img class='random-picture'></img>
-            </div>
         </div>
-        <div class="social-media">
-            <div class="facebook-feed">
-                <a href="https://www.facebook.com"> <img src="img/facebook.png"> </a>
-            </div>
-            <div class="pinterest-feed">
-                <a href="https://www.pinterest.com"> <img src="img/pinterest.svg"> </a>
-            </div>
-        </div>    
     </body>
     <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');

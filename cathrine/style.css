@@ -1,5 +1,12 @@
 body {
-    background-color: yellow;
+    background-image: url('img/background2.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+h1 {
+    font-size: 4em;
 }
 
 .random-picture {
@@ -11,13 +18,30 @@ body {
     margin: 20px auto;
     text-align: center;
 }
-.facebook-feed, .pinterest-feed {
+/* .facebook-feed, .pinterest-feed {
     margin: 0 auto;
-}
+} */
 .facebook-feed img, .pinterest-feed img {
-    width: 200px;
+    width: 150px;
+    transition: .2s;
+}
+.facebook-feed img:hover, .pinterest-feed img:hover {
+    opacity: .7;
 }
 .social-media {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+.greeting {
+    text-align: center;
+}
+.header {
+    text-align: center;
+    width: 75%;
+    background-color: rgba(255,255,255,0.5);
+    margin: 0 auto;
+    color: rgb(12,85,126);
+}
+.author {
+    font-style: italic;
 }
