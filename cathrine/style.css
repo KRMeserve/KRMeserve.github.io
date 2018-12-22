@@ -21,11 +21,11 @@ h1 {
 /* .facebook-feed, .pinterest-feed {
     margin: 0 auto;
 } */
-.facebook-feed img, .pinterest-feed img {
+.facebook-feed img, .pinterest-feed img, .mail-link img {
     width: 150px;
     transition: .2s;
 }
-.facebook-feed img:hover, .pinterest-feed img:hover {
+.facebook-feed img:hover, .pinterest-feed img:hover, .mail-link img:hover {
     opacity: .7;
 }
 .social-media {
