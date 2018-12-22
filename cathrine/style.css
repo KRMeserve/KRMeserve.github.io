@@ -46,3 +46,6 @@ h1 {
 .author {
     font-style: italic;
 }
+.quote {
+    font-size: 1.2em;
+}
