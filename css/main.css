@@ -6,13 +6,19 @@ html {
 img {
     width: 25px;
     height: 25px;
-} 
+}
 /* .linkedin {
     width: 28px;
     height: 28px;
 } */
 .social-media {
     padding-left: 15px;
+}
+.linkedin, .github {
+    transition: .2s;
+}
+.linkedin:hover, .github:hover {
+    opacity: .7;
 }
 .credits {
     padding-top: 5px;
