@@ -41,8 +41,7 @@ var SCALING_MODE_CONTAIN = 3; //Sets 'background-size' to 'contain'. This scales
  * backgroundSize: specify a value for the css3 property 'background size' or one of the following constants; SCALING_MODE_NONE, SCALING_MODE_STRETCH, SCALING_MODE_COVER, SCALING_MODE_CONTAIN
  */
 $.fn.backgroundCycle = function(options) {
-  //setting imageUrls to be correct
-  options.imageUrls = ['img/portfolio-background5.jpg', 'img/portfolio-background2.jpg', 'img/portfolio-background3.jpg', 'img/portfolio-background4.jpg'];
+
   var settings = $.extend(
     {
       imageUrls: [],
@@ -52,8 +51,6 @@ $.fn.backgroundCycle = function(options) {
     },
     options
   );
-  console.log(settings.imageUrls);
-  console.log(options);
   fadeSpeed = settings.fadeSpeed;
 
   var marginTop = this.css("margin-top");
