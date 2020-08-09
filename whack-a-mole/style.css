@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+/* variables */
+:root {
+    --background-color: rgb(37,144,65);
+    --main-text-color: rgb(252,203,1);
+    --subheader-color: white;
+}
+
+body {
+    background-color: var(--background-color);
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: var(--main-text-color);
+}
+
+.subheader {
+    text-align: center;
+    margin-top: 5px;
+    color: white;
+}
+
+.gopher {
+    padding: 30px 0 15px;
+    width: 150px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.description {
+    padding: 0 50px;
+}
+
+.form {
+    margin: 0 auto;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    padding: 10px 0;
+    background-color: black;
+}
+
+.link {
+    color: var(--main-text-color);
+    font-style: normal;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: white;
+    transition: .2s;
+}
